@@ -1,0 +1,14 @@
+<div class="utiltop">
+  Utils
+</div>
+<% if canUse("RightsController","create") %>
+  <button class="button expanded" data-open="newRightModal"><%= fa_icon "plus-circle 3x" %></button>
+<% end %>
+
+<div class="reveal" id="newRightModal" data-reveal>
+  <%= render :template => 'rights/new' %>
+
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

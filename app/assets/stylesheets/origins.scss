@@ -1,0 +1,24 @@
+// Place all the styles related to the Origins controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "_settings";
+
+.linkEntry{
+  text-align:center;
+}
+
+.linkEntry p {
+  font-weight:bold;
+  font-size:1.2em;
+}
+
+.teiler {
+  border-top:2px solid $primary-color;
+  border-bottom:2px solid $primary-color;
+  color:red;
+  font-weight:bold;
+  font-size:1.2em;
+  text-align:center;
+  margin:10px 0px;
+}

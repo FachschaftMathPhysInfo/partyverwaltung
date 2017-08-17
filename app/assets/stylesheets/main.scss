@@ -1,0 +1,86 @@
+@import "_settings";
+body {
+  height:100%;
+}
+
+body > .row {
+  
+}
+
+body > #content {
+  background-color:white;
+}
+
+#headrow {
+  color:white;
+}
+
+#headrow > .column {
+  height:150px;
+  border-bottom:2px white solid;
+  background-color:$primary-color;
+}
+
+#headrow #softwarename {
+  line-height:120px;
+  font-weight:bold;
+  font-size:2em;
+  padding-bottom:30px;
+}
+
+.curSem {
+  text-align:center;
+  font-size:1.5em;
+  padding-top:10px;
+}
+
+.userIcon {
+  line-height:150px;
+  text-align:right;
+}
+
+.userStar {
+  line-height:70px;
+  text-align:left;
+  font-weight:bold;
+}
+
+.userName {
+  line-height:70px;
+  text-align:left;
+  font-weight:bold;
+  font-size:30px;
+}
+
+#mainmenu {
+  margin-bottom:10px;
+}
+
+#mainmenu .column {
+  padding:0px;
+}
+
+#mainmenu .button {
+  margin-bottom:0px;
+  font-size:1.3em;
+  font-weight:bold;
+}
+
+#footrow {
+  background-color:$primary-color;
+  color:white;
+}
+
+.utiltop {
+  text-align:center;
+  color:white;
+  background-color:$primary-color;
+  font-weight:bold;
+  font-size:1.3em;
+  border-bottom:2px white solid;
+}
+
+.alertBox {
+  font-size:1.2em;
+  text-align:center;
+}

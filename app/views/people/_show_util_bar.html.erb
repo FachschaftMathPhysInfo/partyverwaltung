@@ -1,0 +1,34 @@
+<div class="utiltop">
+  Utils
+</div>
+<% if canUse("PeopleController","create") %>
+  <button class="button expanded" data-open="newPersonModal">
+    <%= fa_icon "user-plus 3x", class: "show-for-large"%>
+    <%= fa_icon "user-plus 2x", class: "hide-for-large"%>
+  </button>
+<% end %>
+<% if canUse("PeopleController","update") %>
+  <button class="button expanded" data-open="editPersonModal">
+    <%= fa_icon "pencil 3x", class: "show-for-large"%>
+    <%= fa_icon "pencil 2x", class: "hide-for-large"%>
+  </button>
+<% end %>
+<% if canUse("PeopleController","destroy") %>
+  <%= link_to fa_icon("trash 3x"), @person, :class=>"button expanded", :confirm => "Sure?", :method => :delete %>
+<% end %>
+
+<div class="reveal" id="newPersonModal" data-reveal>
+  <%= render :template => 'people/new' %>
+
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="reveal" id="editPersonModal" data-reveal>
+  <%= render :template => 'people/edit' %>
+
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

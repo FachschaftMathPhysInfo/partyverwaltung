@@ -1,0 +1,14 @@
+<div class="utiltop">
+  Utils
+</div>
+<% if canUse("PartiesController","create") %>
+  <button class="button expanded" data-open="newPartyModal"><%= fa_icon "plus 3x" %></button>
+<% end %>
+
+<div class="reveal" id="newPartyModal" data-reveal>
+  <%= render :template => 'parties/new' %>
+
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

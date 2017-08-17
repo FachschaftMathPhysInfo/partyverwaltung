@@ -1,0 +1,26 @@
+// Place all the styles related to the Judges controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "_settings";
+
+.sectionBox {
+  border:1px black solid;
+  padding-top:10px;
+}
+
+.secHead {
+  background-color:$primary-color;
+  color:white;
+  font-weight:bold;
+  font-size:1.5em;
+}
+
+.secHead .button {
+  color:white;
+  border:1px white solid;
+}
+
+.bordering {
+  border:2px solid $primary-color;
+}

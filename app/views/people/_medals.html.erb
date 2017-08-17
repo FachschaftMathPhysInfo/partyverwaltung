@@ -1,0 +1,67 @@
+<% if canUse("PeopleController","change_status") %>
+  <div class="row" id="medals">
+    <%= link_to change_status_path(:type => 1), :method => :post do %>
+      <% if status.value == 1 %>
+        <div class="small-4 column">
+      <% else %>
+        <div class="small-4 column" style="opacity:0.3;">
+      <% end %>
+        <%= image_tag "/star-medal.svg" %><br>
+        Veteran
+      </div>
+    <% end %>
+    
+    <%= link_to change_status_path(:type => -1), :method => :post do %>
+      <% if status.value == -1 %>
+        <div class="small-4 column">
+      <% else %>
+        <div class="small-4 column" style="opacity:0.3;">
+      <% end %>
+        <%= image_tag "/stop-medal.svg" %><br>
+        Blacklist
+      </div>
+    <% end %>
+    
+    <% if person.wert == 2 %>
+      <div class="small-4 column">
+    <% else %>
+      <div class="small-4 column" style="opacity:0.3;">
+    <% end %>
+      <%= image_tag "/hero-medal.svg" %><br>
+      Approved Helfer
+    </div>
+  </div>
+<% else %>
+
+  <div class="row" id="medals">
+    
+      <% if status.value == 1 %>
+        <div class="small-4 column">
+      <% else %>
+        <div class="small-4 column" style="opacity:0.3;">
+      <% end %>
+        <%= image_tag "/star-medal.svg" %><br>
+        Veteran
+      </div>
+   
+   
+      <% if status.value == -1 %>
+        <div class="small-4 column">
+      <% else %>
+        <div class="small-4 column" style="opacity:0.3;">
+      <% end %>
+        <%= image_tag "/stop-medal.svg" %><br>
+        Blacklist
+      </div>
+    
+    
+    <% if person.wert == 2 %>
+      <div class="small-4 column">
+    <% else %>
+      <div class="small-4 column" style="opacity:0.3;">
+    <% end %>
+      <%= image_tag "/hero-medal.svg" %><br>
+      Approved Helfer
+    </div>
+  </div>
+<% end %>

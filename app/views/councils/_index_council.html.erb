@@ -1,0 +1,21 @@
+<div class="small-12 medium-6 column">
+  <div class="row councilBox">
+    <div class="small-12 column" style="position:relative;">
+      <%= fa_icon "users" %>
+      <%= council.name %>
+      
+      <span style="text-align:right;position:absolute;right:5px;">
+        ( <%= council.shortcut %>)
+        <% if canUse("CouncilsController","update") %>
+          <%= link_to fa_icon("pencil"), edit_council_path(council) %>
+        <% end %>
+        <% if canUse("CouncilsController","destroy") %>
+          <%= link_to fa_icon("trash"), council, :confirm => "Sure?", :method => :delete %>
+        <% end %>
+      </span>
+    </div>
+    <div class="small-12 column" style="height:50px; background-color:#<%= council.color %>">
+      &nbsp;
+    </div>
+  </div>
+</div>

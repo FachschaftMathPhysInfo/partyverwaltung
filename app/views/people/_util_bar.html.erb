@@ -1,0 +1,14 @@
+<div class="utiltop">
+  Utils
+</div>
+<% if canUse("PeopleController","create") %>
+  <button class="button expanded" data-open="newPersonModal"><%= fa_icon "user-plus 3x" %></button>
+<% end %>
+
+<div class="reveal" id="newPersonModal" data-reveal>
+  <%= render :template => 'people/new' %>
+
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="small-12 medium-9 medium-offset-1 column">
+    <div class="row">
+          
+      <% if canUse("RightsController","index") %>      
+        <%= link_to rights_path do %>
+          <div class="small-4 column linkEntry">
+            <%= fa_icon "user-circle 5x" %>
+            <p>
+              Userrechte
+            </p>
+          </div>
+        <% end %>
+      <% end %>
+      
+      <% if canUse("PartiesController","index") %>      
+        <%= link_to parties_path do %>
+          <div class="small-4 column linkEntry">
+            <%= fa_icon "glass 5x" %>
+            <p>
+              Feste
+            </p>
+          </div>
+        <% end %>
+      <% end %>
+      
+       <% if canUse("CouncilsController","index") %>      
+        <%= link_to councils_path do %>
+          <div class="small-4 column linkEntry">
+            <%= fa_icon "users 5x" %>
+            <p>
+              Fachschaften
+            </p>
+          </div>
+        <% end %>
+      <% end %>
+      
+    </div>
+    
+    <div class="row">
+      <div class="small-12 column teiler">
+        <%= fa_icon "arrow-down" %> Interne Methoden -- Benutzung auf eigene Gefahr <%= fa_icon "arrow-down" %>
+      </div>
+    </div>
+    
+    <div class="row">
+    
+      <% if canUse("JudgesController","index") %>
+        <%= link_to judges_index_path do %>
+          <div class="small-4 column linkEntry">
+            <%= fa_icon "institution 5x" %>
+            <p>
+              Methodenrechte
+            </p>
+          </div>
+        <% end %>
+      <% end %>
+      
+    </div>
+  </div>
+  <div class="show-for-medium medium-2 column">
+    stuff
+  </div>
+</div>

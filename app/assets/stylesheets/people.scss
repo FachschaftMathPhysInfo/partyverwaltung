@@ -1,0 +1,54 @@
+// Place all the styles related to the People controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "_settings";
+
+.indexPersonName {
+  font-weight:bold;
+  font-size:1.1em;
+  border:2px solid $primary-color;
+  color:$primary-color;
+  margin:0px 5px;
+}
+
+.commentBarTop {
+  text-align:center;
+  color:white;
+  background-color:$primary-color;
+  font-weight:bold;
+  font-size:1.3em;
+  border-bottom:2px white solid;
+}
+
+.persoData .card-divider{
+  font-weight:bold;
+  font-size:1.3em;
+}
+
+.commentKnobs .column{
+  background-color:$primary-color;
+}
+
+.commentKnobs .button {
+  margin-bottom:0;
+}
+
+//NOTES
+.noteShowBox {
+  border:1px solid $secondary-color;
+}
+
+.noteShowBox .headi {
+  background-color:$secondary-color;
+  color:white;
+}
+
+#medals .column {
+  text-align:center;
+}
+
+#curParty .headi {
+  text-align:center;
+  font-size:1.2em;
+}

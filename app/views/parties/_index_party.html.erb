@@ -1,0 +1,15 @@
+<div class="row partyIndexBox">
+  <div class="small-8 column partyData">
+    <%= party.jahr %>, <%= party.semester %>
+  </div>
+  <div class="small-3 column">
+    <% if canUse("PartiesController","activate") and not party.active %>
+      <%= link_to "Aktivieren", parties_activate_path(:newid => party.id), :class=>"expanded button" %>
+    <% end %>
+  </div>
+  <div class="small-1 column">
+    <% if canUse("PartiesController","destroy") %>
+      <%= link_to fa_icon("trash"), party, :class=>"button", :confirm => "Sure?", :method => :delete %>
+    <% end %>
+  </div>
+</div>

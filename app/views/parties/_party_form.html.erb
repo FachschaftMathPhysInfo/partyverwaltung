@@ -1,0 +1,13 @@
+<%= form_for party do |f| %>
+  <table>
+      <tr>
+          <td> Jahr </td>
+          <td> <%= f.text_field :jahr %> </td>
+      </tr>
+      <tr>                    
+          <td> Semester </td>
+          <td> <%= f.select :semester, options_for_select([['Winter'],['Sommer']]) %> </td>
+      </tr>
+  </table>
+  <%= f.submit buttonText, :class => "expanded button"%>
+<% end %>

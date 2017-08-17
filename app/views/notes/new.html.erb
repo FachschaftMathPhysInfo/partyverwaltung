@@ -1,0 +1,6 @@
+<div class="row">
+  <div class="small-12 column">
+    <% note = Note.new %>
+    <%= render partial: "notes/note_form", locals: {person: @person, note: note, buttonText: "Erstellen"} %>
+  </div>
+</div>

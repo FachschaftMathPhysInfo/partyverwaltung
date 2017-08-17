@@ -1,0 +1,13 @@
+<%= form_for right do |r| %>
+  <table>
+      <tr>
+          <td> Nick </td>
+          <td> <%= r.text_field :nick %> </td>
+      </tr>
+      <tr>
+          <td> <%= fa_icon "star-o 2x" %> </td>
+          <td> <%= r.select :level, options_for_select([[1],[2],[3]])%> </td>
+      </tr>
+  </table>
+  <%= r.submit buttonText, :class => "expanded button"%>
+<% end %>

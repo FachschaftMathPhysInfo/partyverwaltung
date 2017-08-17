@@ -1,0 +1,10 @@
+<%= link_to person do %>
+  <div class="small-12 medium-4 column indexPersonName" style="position:relative;">
+    <%= fa_icon "user-circle" %>
+    <%= person.name %>
+    <span style="text-align:right;position:absolute;right:5px;">
+      <%= fa_icon "minus-square" %>
+      <%= fa_icon "plus-square" %>
+    </span>
+  </div>
+<% end %>

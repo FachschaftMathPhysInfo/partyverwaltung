@@ -1,0 +1,14 @@
+<div class="utiltop">
+  Utils
+</div>
+<% if canUse("CouncilsController","create") %>
+  <button class="button expanded" data-open="newCouncilModal"><%= fa_icon "plus 3x" %></button>
+<% end %>
+
+<div class="reveal" id="newCouncilModal" data-reveal>
+  <%= render :template => 'councils/new' %>
+
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

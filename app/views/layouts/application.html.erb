@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "Partyverwaltung" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <div class="row" id="headrow">
+      <div class="show-for-medium medium-6 column" id="softwarename">
+        Partyverwaltung
+      </div>
+      <div class="small-6 medium-2 column curSem">
+        <%= fa_icon "calendar 2x" %><br>
+        <%= @party_active.jahr %><br>
+        <%= @party_active.semester %>
+      </div>
+      <div class="small-3 medium-2 column userIcon">
+        <%= fa_icon "user-circle", :style=>"margin-top:20px;font-size:100px;" %>
+      </div>
+      <div class="small-3 medium-2 column">
+        <div class="row">
+          <div class="small-12 column userStar">
+            <% for kk in 1..@userData[:uLvl] %>
+              <%= fa_icon "star 2x" %>
+            <% end %>
+          </div>
+          <div class="small-12 column userName">
+            <%= http_remote_user %>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row" id="mainmenu">
+      <div class="medium-2 small-12 column">
+          <%= link_to "Home", root_path, :class=>"button expanded"%>
+      </div>
+      <div class="medium-2 small-12 column">
+          <%= link_to "Personen", people_path, :class=>"button expanded" %>
+      </div>
+      <div class="medium-2 small-12 column">
+          <%= link_to "Bereiche", people_path, :class=>"button expanded"%>
+      </div>
+      <div class="medium-2 small-12 column">
+          <%= link_to "Shirts", rights_path, :class=>"button expanded"%>
+      </div>
+      <div class="medium-2 small-12 column">
+          <%= link_to "Verwaltung", administration_path, :class=>"button expanded"%>
+      </div>
+      <div class="medium-2 small-12 column">
+          <%= link_to "Bugs/Features", people_path, :class=>"button expanded"%>
+      </div>
+    </div>
+    
+    <div class="row">
+      <% flash.each do |key, value| %>
+        <div class="alertBox callout <%= key %>"><%= value %></div>
+      <% end %>
+    </div>
+    
+    <div id="content">
+      <%= yield %>
+    </div>
+    
+    <div class="row" id="footrow">
+      <div class="small-10 column">Partyverwaltung by FS MathPhys</div>
+      <div class="small-2 column">Version 2.0</div>
+    </div>
+  </body>
+</html>

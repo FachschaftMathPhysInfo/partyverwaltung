@@ -1,0 +1,25 @@
+<%= form_for person do |f| %>
+  <table>
+      <tr>
+          <td> Vorname </td>
+          <td> <%= f.text_field :vname %> </td>
+      </tr>
+      <tr>
+          <td> Nachname </td>
+          <td> <%= f.text_field :nname %> </td>
+      </tr> 
+      <tr>                    
+          <td> E-Mail </td>
+          <td> <%= f.text_field :mail %> </td>
+      </tr>
+      <tr>                    
+          <td> Shirtgröße </td>
+          <td> <%= f.select :shirt, options_for_select([['XS'],['S'],['M'],['L'],['XL'],['XXL']]) %> </td>
+      </tr>
+      <tr>
+          <td> Shirttyp </td>
+          <td> <%= f.select :typ, options_for_select([['Unisex'],['Male fit'],['Girly fit']])%> </td>
+      </tr>
+  </table>
+  <%= f.submit buttonText, :class => "expanded button"%>
+<% end %>

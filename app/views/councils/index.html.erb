@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="small-12 medium-1 column">
+    <%= render "util_bar" %>
+  </div>
+  
+  <div class="small-12 medium-8 column">
+    <div class="row">
+      <%= render partial: "index_council", collection: @councils, as: :council %>
+      <div class="small-12 medium-6 end column">
+        &nbsp;
+      </div>
+    </div>
+  </div>
+  
+  <div class="small-12 medium-3 column">
+    Search
+  </div>
+</div>

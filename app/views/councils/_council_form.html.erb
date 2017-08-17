@@ -1,0 +1,17 @@
+<%= form_for council do |f| %>
+  <table>
+      <tr>
+          <td> Name </td>
+          <td> <%= f.text_field :name %> </td>
+      </tr>
+      <tr>
+          <td> Kürzel </td>
+          <td> <%= f.text_field :shortcut %> </td>
+      </tr> 
+      <tr>                    
+          <td> Farbe </td>
+          <td> <%= f.text_field :color %> </td>
+      </tr>
+  </table>
+  <%= f.submit buttonText, :class => "expanded button"%>
+<% end %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  wertung: 1
+  text: MyText
+  person_id: 1
+  party_id: 1
+
+two:
+  wertung: 1
+  text: MyText
+  person_id: 1
+  party_id: 1

@@ -1,0 +1,25 @@
+<%= form_for [person,note] do |f| %>
+  <table>
+      <tr>
+          <td> Wertung </td>
+          <td> 
+              <span style="padding:0px 10px;">-2</span>
+              <%= f.radio_button :wertung, -2 %>
+              <span style="padding:0px 10px;">-1</span>
+              <%= f.radio_button :wertung, -1 %>
+              <span style="padding:0px 10px;">0</span>
+              <%= f.radio_button :wertung, 0 %>
+              <span style="padding:0px 10px;">1</span>
+              <%= f.radio_button :wertung, 1 %>
+              <span style="padding:0px 10px;">2</span>
+              <%= f.radio_button :wertung, 2 %>
+          </td>
+      </tr>
+      <tr>
+          <td> Kommentar </td>
+          <td> <%= f.text_area :text,:size => "65x13" %> </td>
+      </tr>
+  </table>
+  
+  <%= f.submit buttonText, :class => "expanded button"%>
+<% end %>

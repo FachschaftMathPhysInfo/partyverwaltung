@@ -1,0 +1,68 @@
+<div class="row">
+  <div class="small-12 medium-1 column">
+    &nbsp;
+  </div>
+  
+  <div class="small-12 medium-8 column">
+    <% @links.each do |l,k| %>
+      <div class="row bordering">
+        <div class="small-12 column">
+          <div class="row secHead">
+            <div class="small-8 column">
+                <%= l %>
+            </div>
+            <div class="small-4 column">
+              <div class="button-group">
+                <% for i in 0..3 do %>
+                  <% if canUse("JudgesController","change_controller") %>
+                    <%= link_to i, judges_change_controller_path(:e => l.to_s, :v => i), :class=>"button" %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="small-12 column" style="padding-top:10px;">
+          <div class="row">
+            <div class="small-12 medium-8 medium-offset-2 end column">
+              <% k.each do |w| %>
+                <div class="row">
+                  <div class="small-4 column">
+                    <%= w.method %> 
+                  </div>
+                  <div class="small-8 column">
+                    <div class="button-group">
+                      <% for i in 0..3 do %>
+                        <% if i == w.level %>
+                          <% if canUse("JudgesController","change") %>
+                            <%= link_to i, judges_change_path(:e => w, :v => i), :class=>"success button" %>
+                          <% else %>
+                            <span style="font-weight:bold;font-size:1.2em;"><%= i %></span>
+                          <% end %>
+                        <% else %>
+                          <% if canUse("JudgesController","change") %>
+                            <%= link_to i, judges_change_path(:e => w, :v => i), :class=>"button" %>
+                          <% end %>
+                        <% end %>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  
+  <div class="small-12 medium-3 column bordering">
+    <p>
+      Dieser Link liest alle Funktionen neu ein. Dabei werden alte Werte beibehalten und noch nicht vorhandene ergänzt.
+    </p>
+    <% if canUse("JudgesController","init") %>
+      <%= link_to "Re-Init",judges_init_path, :class=>"expanded button" %>
+    <% end %>
+  </div>
+</div>

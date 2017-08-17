@@ -1,0 +1,30 @@
+<div class="small-12 column noteShowBox">
+  <div class="row headi">
+    <div class="small-6 medium-2 column">
+      <%= note.wertung %>
+    </div>
+    <div class="small-6 medium-6 column">
+      <% pp = Party.where("id = :ni",{ni: note.party_id}) %>
+      <%= pp.empty? ? "deleted" : pp.first.name %>
+    </div>
+    <div class="small-12 medium-4 column">
+      <%= note.author || "unknown" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-10 column">
+      <%= simple_format note.text %>
+    </div>
+    <div class="small-2 column">
+      <% if canUse("NotesController","edit") %>
+        <%= link_to edit_person_note_path(@person,note) do %>
+          <%= fa_icon("pencil") %>
+        <% end %>
+      <% end %>
+      <br>
+      <% if canUse("NotesController","destroy") %>
+        <%= link_to fa_icon("trash"), person_note_path(@person,note), :confirm => "Sure?", :method => :delete %>
+      <% end %>
+    </div>
+  </div>
+</div>
