@@ -1,10 +1,20 @@
 <%= link_to person do %>
-  <div class="small-12 medium-4 column indexPersonName" style="position:relative;">
+  <% statCol = ( person.stat.to_i == 1 ? "3adb76" : ( person.stat.to_i == -1 ? "cc4b37" : "white" ) ) %>
+  <div class="small-12 medium-5 column indexPersonName" style="position:relative; background-color:#<%= statCol %>">
     <%= fa_icon "user-circle" %>
     <%= person.name %>
     <span style="text-align:right;position:absolute;right:5px;">
-      <%= fa_icon "minus-square" %>
-      <%= fa_icon "plus-square" %>
+      <% if person.wert.to_i > 0 %>
+        <% for i in 1..person.wert.to_i %>
+          <%= fa_icon "plus-square" %>
+        <% end %>
+      <% end %>
+      <% if person.wert.to_i < 0 %>
+        <% for i in 1..-person.wert.to_i %>
+          <%= fa_icon "minus-square" %>
+        <% end %>
+      <% end %>
+      
     </span>
   </div>
 <% end %>

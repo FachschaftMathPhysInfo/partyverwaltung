@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="small-12 medium-1 column">
+    <%= render "util_bar" %>
+  </div>
+  
+  <div class="small-12 medium-11 column">
+    <div class="row">
+      <%= render partial: "index_shirt", collection: @shirts, as: :shirt %>
+      <div class="small-12 medium-4 end column">
+        &nbsp;
+      </div>
+    </div>
+  </div>
+</div>
+
+

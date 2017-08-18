@@ -37,6 +37,8 @@ def access?
   unless canUse(controller_name.capitalize + "Controller",action_name)
     redirect_to bad_boy_path
   end
+  data = @userData || user_data
+  #do LOG stuff
 end
 
 #gets active party

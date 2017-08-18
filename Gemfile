@@ -51,6 +51,8 @@ gem 'foundation-rails'
 gem "highcharts-rails"
 #nice
 gem "font-awesome-rails"
+#shirts
+gem 'paperclip'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

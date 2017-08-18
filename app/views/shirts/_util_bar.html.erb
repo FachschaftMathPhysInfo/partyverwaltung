@@ -1,0 +1,14 @@
+<div class="utiltop">
+  Utils
+</div>
+<% if canUse("ShirtsController","create") %>
+  <button class="button expanded" data-open="newShirtModal"><%= fa_icon "plus 3x" %></button>
+<% end %>
+
+<div class="reveal" id="newShirtModal" data-reveal>
+  <%= render :template => 'shirts/new' %>
+
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

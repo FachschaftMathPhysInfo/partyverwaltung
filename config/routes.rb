@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 #PARTIES
   match '/parties/activate', :to => 'parties#activate', :via => [:get, :post]
   post '/parties/copy'
+#SHIRTS
+  post 'shirt/:id/download' => 'shirts#download', :as => :shirt_download
 #RESOURCES
   resources :people do
     resources :notes
@@ -26,5 +28,6 @@ Rails.application.routes.draw do
   resources :rights
   resources :parties
   resources :councils
+  resources :shirts
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

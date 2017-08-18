@@ -1,0 +1,87 @@
+// Place all the styles related to the shirts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.imgCont {
+  text-align:center;
+  margin:10px 0px;
+}
+
+.thumbImg {
+  position:relative;
+  height:420px;
+  width:300px;
+}
+
+.imgLabel {
+  position:absolute;
+  bottom:0;
+  width:300px;
+  height:50px;
+  line-height:50px;
+  z-index:2;
+  background-color:rgba(0.5,0.5,0.5,0.6);
+  
+  text-align:center;
+  font-weight:bold;
+  font-size:1.2em;
+  color:white;
+}
+
+.imgButtons {
+  position:absolute;
+  top:0;
+  width:300px;
+  display:none;
+  background-color:rgba(0.5,0.5,0.5,0.6);
+  color:white;
+  text-align:right;
+}
+
+.thumbImg:hover .imgButtons {
+  display:block;
+}
+
+.imgButtons .row {
+  padding:0px 15px;
+}
+
+.imgButtons .column {
+  padding:0;
+}
+
+.imgButtons .button {
+  padding:0;
+  margin:0;
+  background-color:rgba(0.5,0.5,0.5,0);
+}
+
+.imgButtons .button:hover {
+  color:pink;
+}
+
+.shirtDrop {
+  padding:0;
+  margin:0;
+  background-color:rgba(0.5,0.5,0.5,0.6);
+}
+
+.shirtDrop .button {
+  margin:0;
+  background-color:rgba(0.5,0.5,0.5,0);
+  font-weight:bold;
+  padding-left:0;
+  padding-right:0;
+}
+
+.shirtDrop .button:hover {
+  color:pink;
+}
+
+.shirtDrop .row {
+  padding:0px 15px;
+}
+
+.shirtDrop .column {
+  padding:0;
+}

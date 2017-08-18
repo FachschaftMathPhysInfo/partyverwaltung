@@ -1,6 +1,7 @@
 class PeopleController < ApplicationController
   def index
-    @people=Person.all.order("vname ASC")
+    #@people=Person.all.order("vname ASC")
+    @people = Person.joins(:status).select("people.*, statuses.value as stat")
   end
 
   def create

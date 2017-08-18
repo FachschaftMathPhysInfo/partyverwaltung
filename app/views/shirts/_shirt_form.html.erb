@@ -1,0 +1,22 @@
+<%= form_for shirt ,:html => { :multipart => true } do |f| %>
+  <table>
+      <tr>
+          <td> Jahr </td>
+          <td> <%= f.text_field :jahr %> </td>
+      </tr>
+      <tr>                    
+          <td> Semester </td>
+          <td> <%= f.select :semester, options_for_select([['Winter'],['Sommer']]) %> </td>
+      </tr>
+      <tr>                    
+          <td> Motto </td>
+          <td> <%= f.text_area :motto, :size =>"40x5" %> </td>
+      </tr>
+      <tr>                    
+          <td> Motiv </td>
+          <td> <%= f.file_field :photo %> </td>
+      </tr>
+  </table>
+    
+  <%= f.submit buttonText, :class => "expanded button"%>
+<% end %>

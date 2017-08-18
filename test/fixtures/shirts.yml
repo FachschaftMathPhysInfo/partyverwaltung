@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  jahr: 1
+  semester: MyString
+  motto: MyText
+  photo: 
+
+two:
+  jahr: 1
+  semester: MyString
+  motto: MyText
+  photo: 
