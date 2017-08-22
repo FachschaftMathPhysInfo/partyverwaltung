@@ -1,0 +1,23 @@
+// Place all the styles related to the bugs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.bugBox {
+  padding:0;
+  font-size:1.1em;
+  line-height:1.1em;
+}
+
+.bugName {
+  font-weight:bold;
+  text-align:center;
+}
+
+.bugText {
+  border-left:2px black solid;
+}
+
+.bugBox .button {
+  margin:0;
+  padding:10px 20px;
+}

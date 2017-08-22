@@ -1,0 +1,18 @@
+<% mColor = ( bug.typ == 1 ? mColor="#00ff00" : mColor="#ff0000" ) %>
+<div class="row bugBox" style="border:2px solid <%= mColor %>">
+  <div class="small-3 column bugName">
+    <%= bug.name %>
+  </div>
+  <div class="small-7 column bugText">
+    <%= simple_format bug.text %>
+  </div>
+  <div class="small-2 column">
+    <% mColor = ( bug.value == 0 ? mColor="#ff0000" : ( bug.value == 1 ? mColor="#ffff00" : mColor="#00ff00") ) %>
+    <% if canUse("BugsController","change") %>
+      <%= link_to bugs_change_path(:b => bug.id) do %> <span style="color:<%= mColor %>;"><%= fa_icon "podcast 2x" %></span> <% end %>
+    <% end %>
+    <% if canUse("BugsController","destroy") %>
+      <%= link_to fa_icon("trash 2x"), bug, :class=>"button", :confirm => "Sure?", :method => :delete %>
+    <% end %>
+  </div>
+</div>

@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get 'rights/change'
 #PERSON
   post 'people/:id/change_status', :to => 'people#change_status', :as => :change_status
+#BUG
+  get 'bugs/change'
 #LOGS
   get 'logs/index'
   post 'logs/index'
@@ -31,6 +33,7 @@ Rails.application.routes.draw do
   resources :parties
   resources :councils
   resources :shirts
+  resources :bugs
   
   resources :sections do
     #resources :shifts

@@ -1,0 +1,17 @@
+<%= form_for bug do |f| %>
+  <table>
+    <tr>                    
+      <td> Art </td>
+      <td> <%= f.select :typ, options_for_select([["feature","1"],["bug","-1"]]) %> </td>
+    </tr>
+    <tr>
+      <td> Titel </td>
+      <td> <%= f.text_field :name %> </td>
+    </tr>
+    <tr>
+      <td> Text </td>
+      <td> <%= f.text_area :text %> </td>
+    </tr>
+  </table>
+  <%= f.submit buttonText, :class => "expanded button"%>
+<% end %>

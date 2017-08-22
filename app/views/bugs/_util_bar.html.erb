@@ -1,0 +1,14 @@
+<div class="utiltop">
+  Utils
+</div>
+<% if canUse("BugsController","create") %>
+  <button class="button expanded" data-open="newBugModal"><%= fa_icon "plus 3x" %></button>
+<% end %>
+
+<div class="reveal" id="newBugModal" data-reveal>
+  <%= render :template => 'bugs/new' %>
+
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
