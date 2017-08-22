@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="small-12 medium-4 column filterCol">
+    <%= render partial: "filter" %>
+  </div>
+  <div class="small-12 medium-8 column">
+    <table>
+      <tr>
+        <th>Time</th>
+        <th>User</th>
+        <th>Controller</th>
+        <th>Action</th>
+      </tr>
+      <%= render partial: "log_index", collection: @logs, as: :log %>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="small-12 column">
+    <% sectionManager = SectionManager.new(:section_id => params[:section_id]) %>
+    <%= form_for [@section,sectionManager] do |f| %>
+      <table>
+        <tr>
+          <td> Name </td>
+          <td> <%= select_tag :person_id, options_from_collection_for_select(Person.joins(:status).where("value != -1"), :id, :name) %> </td>
+        </tr>
+      </table>
+      <%= f.submit "Eintragen", :class => "expanded button"%>
+    <% end %>
+  </div>
+</div>

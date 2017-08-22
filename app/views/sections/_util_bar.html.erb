@@ -1,0 +1,14 @@
+<div class="utiltop">
+  Utils
+</div>
+<% if canUse("SectionsController","create") %>
+  <button class="button expanded" data-open="newSectionModal"><%= fa_icon "plus 3x" %></button>
+<% end %>
+
+<div class="reveal" id="newSectionModal" data-reveal>
+  <%= render :template => 'sections/new' %>
+
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

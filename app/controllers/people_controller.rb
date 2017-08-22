@@ -1,7 +1,7 @@
 class PeopleController < ApplicationController
   def index
     #@people=Person.all.order("vname ASC")
-    @people = Person.joins(:status).select("people.*, statuses.value as stat")
+    @people = Person.joins(:status).select("people.*, statuses.value as stat").order("vname ASC")
   end
 
   def create
@@ -43,6 +43,7 @@ class PeopleController < ApplicationController
   def show
     @person = Person.find(params[:id])
     @notes = @person.notes.order('created_at DESC')
+    @bls = Section.joins(:section_managers).select("sections.*").order("name ASC")
   end
   
   def change_status

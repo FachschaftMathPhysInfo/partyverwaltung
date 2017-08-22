@@ -1,0 +1,31 @@
+<div class="utiltop">
+  Utils
+</div>
+<% if canUse("SectionsController","create") %>
+  <button class="button expanded" data-open="newSectionModal"><%= fa_icon "plus 3x" %></button>
+<% end %>
+<% if canUse("SectionsController","update") %>
+  <button class="button expanded" data-open="editSectionModal">
+    <%= fa_icon "pencil 3x", class: "show-for-large"%>
+    <%= fa_icon "pencil 2x", class: "hide-for-large"%>
+  </button>
+<% end %>
+<% if canUse("SectionsController","destroy") %>
+  <%= link_to fa_icon("trash 3x"), @section, :class=>"button expanded", :confirm => "Sure?", :method => :delete %>
+<% end %>
+
+<div class="reveal" id="newSectionModal" data-reveal>
+  <%= render :template => 'sections/new' %>
+
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="reveal" id="editSectionModal" data-reveal>
+  <%= render :template => 'sections/edit' %>
+
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

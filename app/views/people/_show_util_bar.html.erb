@@ -16,6 +16,12 @@
 <% if canUse("PeopleController","destroy") %>
   <%= link_to fa_icon("trash 3x"), @person, :class=>"button expanded", :confirm => "Sure?", :method => :delete %>
 <% end %>
+<% if canUse("SectionManagersController","create") and @person.status.first.value != -1 %>
+  <button class="button expanded" data-open="blModal">
+    <%= fa_icon "plus 2x"%>
+    <span>BL</span>
+  </button>
+<% end %>
 
 <div class="reveal" id="newPersonModal" data-reveal>
   <%= render :template => 'people/new' %>
@@ -27,6 +33,14 @@
 
 <div class="reveal" id="editPersonModal" data-reveal>
   <%= render :template => 'people/edit' %>
+
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="reveal" id="blModal" data-reveal>
+  <%= render partial: 'addBL', locals: {:person => @person} %>
 
   <button class="close-button" data-close aria-label="Close modal" type="button">
     <span aria-hidden="true">&times;</span>

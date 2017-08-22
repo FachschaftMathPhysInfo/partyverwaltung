@@ -1,0 +1,9 @@
+<%= form_for section do |f| %>
+  <table>
+    <tr>
+      <td> Name </td>
+      <td> <%= f.text_field :name %> </td>
+    </tr>
+  </table>
+  <%= f.submit buttonText, :class => "expanded button"%>
+<% end %>

@@ -1,0 +1,8 @@
+<% if @bls.ids.empty? %>
+  <% blSecs = Section.where("party_id = ?", getActiveParty().id).order("name ASC") %>
+<% else %>
+  <% blSecs = Section.where("party_id = ? AND id NOT IN (?)", getActiveParty().id, @bls.ids).order("name ASC") %>
+<% end %>
+<% blSecs.each do |bb| %>
+  <%= link_to bb.name, section_section_managers_path(bb.id, :person_id => @person.id, :from_person=>true), :method => :post, :class=>"expanded button", :style=>"paddin:0;" %>
+<% end %>

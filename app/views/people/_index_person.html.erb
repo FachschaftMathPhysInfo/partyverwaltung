@@ -1,4 +1,4 @@
-<%= link_to person do %>
+<%= link_to person, :data => { :'name' => person.name, :'stat' => person.stat }, :class=>"persoLink" do %>
   <% statCol = ( person.stat.to_i == 1 ? "3adb76" : ( person.stat.to_i == -1 ? "cc4b37" : "white" ) ) %>
   <div class="small-12 medium-5 column indexPersonName" style="position:relative; background-color:#<%= statCol %>">
     <%= fa_icon "user-circle" %>

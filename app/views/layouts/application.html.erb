@@ -17,11 +17,21 @@
       <div class="show-for-medium medium-6 column" id="softwarename">
         Partyverwaltung
       </div>
-      <div class="small-6 medium-2 column curSem">
-        <%= fa_icon "calendar 2x" %><br>
-        <%= @party_active.jahr %><br>
-        <%= @party_active.semester %>
-      </div>
+      <% if canUse("PartiesController","index") %>
+        <div class="small-6 medium-2 column curSem">
+          <%= link_to parties_path, :id=>"semLink" do %>
+            <%= fa_icon "calendar 2x" %><br>
+            <%= @party_active.jahr %><br>
+            <%= @party_active.semester %>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="small-6 medium-2 column curSem">
+          <%= fa_icon "calendar 2x" %><br>
+          <%= @party_active.jahr %><br>
+          <%= @party_active.semester %>
+        </div>
+      <% end %>
       <div class="small-3 medium-2 column userIcon">
         <%= fa_icon "user-circle", :style=>"margin-top:20px;font-size:100px;" %>
       </div>
@@ -47,7 +57,7 @@
           <%= link_to "Personen", people_path, :class=>"button expanded" %>
       </div>
       <div class="medium-2 small-12 column">
-          <%= link_to "Bereiche", people_path, :class=>"button expanded"%>
+          <%= link_to "Bereiche", sections_path, :class=>"button expanded"%>
       </div>
       <div class="medium-2 small-12 column">
           <%= link_to "Shirts", shirts_path, :class=>"button expanded"%>

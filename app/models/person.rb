@@ -1,5 +1,5 @@
 class Person < ApplicationRecord
-  #has_many :section_managers, :dependent => :nullify
+  has_many :section_managers, :dependent => :destroy
   #has_many :shifts, :dependent => :nullify
   has_many :notes, :dependent => :destroy
   has_many :status, :dependent => :destroy

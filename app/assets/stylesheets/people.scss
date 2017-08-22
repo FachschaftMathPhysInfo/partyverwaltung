@@ -44,6 +44,8 @@
   color:white;
 }
 
+//NOTES END
+
 #medals .column {
   text-align:center;
 }
@@ -51,4 +53,23 @@
 #curParty .headi {
   text-align:center;
   font-size:1.2em;
+}
+
+//BLS
+.blBox {
+  border-left:2px solid $primary-color;
+  border-bottom:2px solid $primary-color;
+  margin:5px 0px;
+  padding:4px;
+  position:relative;
+}
+
+.blBox .boxActions {
+  position:absolute;
+  right:0;
+  top:0;
+}
+
+.blBox .boxActions .button{
+  padding:5px;
 }

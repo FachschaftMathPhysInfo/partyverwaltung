@@ -34,11 +34,13 @@ end
 
 #checks if action may be executed (if url is entered manually e.g.)
 def access?
-  unless canUse(controller_name.capitalize + "Controller",action_name)
-    redirect_to bad_boy_path
+  unless canUse(ActiveSupport::Inflector::camelize(controller_name) + "Controller",action_name) #controller_name.capitalize
+    redirect_to bad_boy_path(:con => controller_name, :met => action_name)
   end
   data = @userData || user_data
   #do LOG stuff
+  l = Log.new(:controller => controller_name.capitalize, :method => action_name, :user => http_remote_user)
+  l.save
 end
 
 #gets active party

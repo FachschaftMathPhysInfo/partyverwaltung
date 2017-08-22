@@ -1,0 +1,77 @@
+<div class="row">
+  <div class="small-12 medium-1 column">
+    <%= render "show_util_bar" %>
+  </div>
+  
+  <div class="small-12 medium-5 column">
+    <div class="row">
+      <div class="small-12 column sectionData">
+      
+        <div class="card">
+          <div class="card-divider">
+            <%= fa_icon "vcard 2x", style: "margin-right:10px"%> 
+            <p><%= @section.name %></p>
+          </div>
+          <div class="card-section">
+            <table>
+              <tr>
+                <td><%= fa_icon "tasks" %> Schichten</td>
+                <td>hi</td>
+              </tr>
+              <tr>
+                <td><%= fa_icon "tasks" %> freie Schichten</td>
+                <td>hi</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="small-12 column leaderData">
+        <div class="row head">
+          Leitung
+        </div>
+        <div class="row cont">
+          <div class="small-2 column" style="padding:0">
+            <% if canUse("SectionManagersController","create") %>
+              <button class="button expanded" data-open="newSectionManagerModal"><%= fa_icon "plus 3x" %></button>
+            <% else %>
+              <button class="button expanded"><%= fa_icon "user 3x" %></button>
+            <% end %>
+          </div>
+          <div class="small-10 column">
+            <% @bl.each do |b| %>
+              <div class="leaderBox">
+                <%= link_to b[2].name, b[2], :style=>"display:block;" %>
+                <div class="boxActions">
+                  <% if canUse("SectionManagersController","destroy") %>
+                    <%= link_to fa_icon("trash"), [b[1],b[0]], :class=>"button expanded", :confirm => "Sure?", :method => :delete %>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+  <div class="small-12 medium-6 column">
+    Schichten
+  </div>
+</div>
+
+
+
+
+<div class="reveal" id="newSectionManagerModal" data-reveal>
+  <%= render :template => 'section_managers/new' %>
+
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

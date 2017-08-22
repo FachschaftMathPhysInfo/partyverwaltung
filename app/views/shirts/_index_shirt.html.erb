@@ -1,6 +1,8 @@
 <div class="small-12 medium-4 column imgCont">
   <div class="thumbImg">
-    <%= image_tag shirt.photo.url(:thumb), :height=>"300" %>
+    <button data-toggle="showShirtModal<%= shirt.id %>">
+      <%= image_tag shirt.photo.url(:thumb), :height=>"300" %>
+    </button>
     
     <div class="imgLabel">
       <%= shirt.semester %>, <%= shirt.jahr %>
@@ -35,7 +37,15 @@
 </div>
 
 <div class="reveal" id="editShirtModal<%= shirt.id %>" data-reveal>
-  <%= render :template => 'shirts/edit', :locals => { :shirt => shirt } %>
+  <%= render partial: "shirt_form", locals: {shirt: shirt, buttonText: "Erstellen"} %>
+
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="reveal" id="showShirtModal<%= shirt.id %>" data-reveal>
+  <%= image_tag shirt.photo.url(:original) %>
 
   <button class="close-button" data-close aria-label="Close modal" type="button">
     <span aria-hidden="true">&times;</span>

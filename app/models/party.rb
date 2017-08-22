@@ -1,5 +1,5 @@
 class Party < ApplicationRecord
-  #has_many :sections, :dependent => :destroy
+  has_many :sections, :dependent => :destroy
   has_many :notes, :dependent => :nullify
   
   def name

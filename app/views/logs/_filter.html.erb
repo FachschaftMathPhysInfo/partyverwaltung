@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="small-12 column">
+    <%= link_to "Alles anzeigen", logs_index_path, :class=>"expanded button" %>
+  </div>
+</div>
+<div class="row">
+  <p>Filter by User</p>
+  <%= form_tag logs_index_path do %>
+    <% blubb = params[:lUser] || :first %>
+    <%= select_tag :lUser, options_for_select(@lUsers, blubb), :onchange => 'this.form.submit()' %>
+  <% end %>
+</div>
+<div class="row">
+  <p>Filter by Controller</p>
+  <%= form_tag logs_index_path do %>
+    <% blubb = params[:cFilter] || :first %>
+    <%= select_tag :cFilter, options_for_select(@conts, blubb), :onchange => 'this.form.submit()' %>
+  <% end %>
+</div>
+<div class="row">
+  <p>Filter by Method</p>
+  <%= form_tag logs_index_path do %>
+    <% blubb = params[:mFilter] || :first %>
+    <%= select_tag :mFilter, options_for_select(@meths, blubb), :onchange => 'this.form.submit()' %>
+  <% end %>
+</div>

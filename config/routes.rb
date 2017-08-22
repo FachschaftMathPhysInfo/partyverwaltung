@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   get 'rights/change'
 #PERSON
   post 'people/:id/change_status', :to => 'people#change_status', :as => :change_status
-  
+#LOGS
+  get 'logs/index'
+  post 'logs/index'
 #ORIGIN
   root 'origins#index'
   get 'origins/administration', :as => :administration
@@ -29,5 +31,10 @@ Rails.application.routes.draw do
   resources :parties
   resources :councils
   resources :shirts
+  
+  resources :sections do
+    #resources :shifts
+    resources :section_managers
+    end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

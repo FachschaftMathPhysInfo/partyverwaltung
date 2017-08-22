@@ -56,6 +56,17 @@
         <% end %>
       <% end %>
       
+       <% if canUse("LogsController","index") %>
+        <%= link_to logs_index_path do %>
+          <div class="small-4 column linkEntry">
+            <%= fa_icon "tasks 5x" %>
+            <p>
+              Logs
+            </p>
+          </div>
+        <% end %>
+      <% end %>
+      
     </div>
   </div>
   <div class="show-for-medium medium-2 column">

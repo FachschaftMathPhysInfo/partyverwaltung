@@ -21,8 +21,6 @@
 // to get the new features in 2.3.0:
 //= require highcharts/highcharts-more
 
-//= require typeahead
-
 //$(function(){ $(document).foundation(); });
 $(document).on('turbolinks:load', function() {
   $(function(){ $(document).foundation(); });
