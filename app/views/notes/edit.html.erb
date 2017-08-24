@@ -1,8 +1,8 @@
 <div class="row">
   <div class="small-12 column">
-    <% note = Note.find(params[:id]) %>
+    <% note = Note.find(nid) %>
     <% if canUse("NotesController","update") %>
-      <%= render partial: "notes/note_form", locals: {person: Person.find(params[:person_id]), note: note, buttonText: "Updaten"} %>
+      <%= render partial: "notes/note_form", locals: {person: Person.find(pid), note: note, buttonText: "Updaten"} %>
     <% else %>
       <div> Du darfst nicht updaten</div>
     <% end %>

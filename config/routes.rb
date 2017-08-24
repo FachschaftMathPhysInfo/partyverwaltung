@@ -23,6 +23,9 @@ Rails.application.routes.draw do
   post '/parties/copy'
 #SHIRTS
   post 'shirt/:id/download' => 'shirts#download', :as => :shirt_download
+#SHIFTS
+  get 'shifts/sortToCouncil'
+  post 'shifts/sortToCouncil'
 #RESOURCES
   resources :people do
     resources :notes
@@ -36,7 +39,7 @@ Rails.application.routes.draw do
   resources :bugs
   
   resources :sections do
-    #resources :shifts
+    resources :shifts
     resources :section_managers
     end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="small-12 column">
+    <%= form_for [@section,shift] do |f| %>
+      <table>
+        <tr>
+          <td> Start </td>
+          <td> <%= f.text_field :start, :value => shift.start.to_s(:time) %> </td>
+        </tr>
+        <tr>
+          <td> Ende </td>
+          <td> <%= f.text_field :ende, :value => shift.ende.to_s(:time) %> </td>
+        </tr> 
+        <tr>
+          <td> Fachschaft </td>
+          <% if shift.council_id %>
+            <td> <%= select_tag :council_id, options_from_collection_for_select(Council.all, :id, :name) %> </td>
+          <% else %>
+            <td> noch keine </td>
+          <% end %>
+        </tr>
+    </table>
+      <%= f.submit "Updaten", :class => "expanded button" %>
+    <% end %>
+  </div>
+</div>

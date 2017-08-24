@@ -1,0 +1,28 @@
+<div class="small-12 column">
+  <div class="row chooseShiftBlock">
+    <div class="small-2 column">
+      <%= shiftGroup.start.to_s(:time) %> -- <%= shiftGroup.ende.to_s(:time) %>
+    </div>
+    <div class="small-8 column">
+      <% @councils.each do |c| %>
+        <div class="row">
+          <div class="small-2 column">
+            <%= c.name %>
+          </div>
+          <div class="small-8 columns sliderCol">
+            <div class="slider" data-slider data-initial-start="0" data-step="1" data-end="<%= shiftGroup.count %>">
+              <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" data-cur="0" aria-controls="<%= shiftGroup.id %>sliderOutput<%= c.id %>"></span>
+              <span class="slider-fill" data-slider-fill></span>
+            </div>
+          </div>
+          <div class="small-2 columns">
+            <%= number_field_tag shiftGroup.id.to_s+"sliderOutput"+c.id.to_s %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="small-2 column shiftCounter" id="<%= shiftGroup.id %>rest">
+      <%= shiftGroup.count %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="small-12 column">
+    <% shift = Shift.new(:section_id => section_id) %>
+    <%= form_for [@section,shift] do |f| %>
+      <table>
+        <tr>
+          <td> Start </td>
+          <td> <%= f.text_field :start %> </td>
+        </tr>
+        <tr>
+          <td> Ende </td>
+          <td> <%= f.text_field :ende %> </td>
+        </tr> 
+        <tr>
+          <td> Anzahl </td>
+          <td> <%= number_field_tag :counter, 1, :min => 1 %> </td>
+        </tr>
+    </table>
+      <%= f.submit "Erstellen", :class => "expanded button"%>
+    <% end %>
+  </div>
+</div>

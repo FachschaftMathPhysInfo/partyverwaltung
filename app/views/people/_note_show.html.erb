@@ -17,9 +17,7 @@
     </div>
     <div class="small-2 column">
       <% if canUse("NotesController","edit") %>
-        <%= link_to edit_person_note_path(@person,note) do %>
-          <%= fa_icon("pencil") %>
-        <% end %>
+        <button data-open="editNoteModal<%= note.id %>"><%= fa_icon "pencil" %></button>
       <% end %>
       <br>
       <% if canUse("NotesController","destroy") %>
@@ -27,4 +25,12 @@
       <% end %>
     </div>
   </div>
+</div>
+
+<div class="reveal" id="editNoteModal<%= note.id %>" data-reveal>
+  <%= render :template => 'notes/edit', :locals => {:nid => note.id, :pid => @person.id } %>
+
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
 </div>

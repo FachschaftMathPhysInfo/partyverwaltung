@@ -16,11 +16,15 @@
             <table>
               <tr>
                 <td><%= fa_icon "tasks" %> Schichten</td>
-                <td>hi</td>
+                <td><%= @shifts.size %></td>
               </tr>
               <tr>
                 <td><%= fa_icon "tasks" %> freie Schichten</td>
-                <td>hi</td>
+                <td><%= @shifts.select{ |x| x.person_id == nil }.size %></td>
+              </tr>
+              <tr>
+                <td><%= fa_icon "tasks" %> unzugeordnete Schichten</td>
+                <td><%= @shifts.select{ |x| x.council_id == nil }.size %></td>
               </tr>
             </table>
           </div>
@@ -58,10 +62,34 @@
         
       </div>
     </div>
+    
+    <div class="row">
+      <div class="small-12 column leaderData">
+        <div class="row head">
+          Bereichstext
+        </div>
+        <div class="row">
+          <a data-open="editTextModal">
+            <div class="small-12 column">
+              <%= simple_format @section.text || "Noch nichts geschrieben" %>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
   
   <div class="small-12 medium-6 column">
-    Schichten
+    <div class="row shiftHead">
+      Schichten
+    </div>
+    <div class="row" style="padding:5px 15px">
+      <%= render partial: "index_shift", collection: @shifts, as: :shift %>
+    </div>
+   
+    <% if canUse("ShiftsController","create") %>
+      <button class="button expanded" data-open="newShiftModal"><%= fa_icon "plus 2x" %></button>
+    <% end %>
   </div>
 </div>
 
@@ -70,6 +98,22 @@
 
 <div class="reveal" id="newSectionManagerModal" data-reveal>
   <%= render :template => 'section_managers/new' %>
+
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="reveal" id="newShiftModal" data-reveal>
+  <%= render :template => 'shifts/new', locals:{:section_id => @section.id} %>
+
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="reveal" id="editTextModal" data-reveal>
+  <%= render :template => 'sections/editText', locals:{:section => @section} %>
 
   <button class="close-button" data-close aria-label="Close modal" type="button">
     <span aria-hidden="true">&times;</span>

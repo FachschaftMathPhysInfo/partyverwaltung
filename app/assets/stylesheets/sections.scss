@@ -33,3 +33,50 @@
 .leaderBox .boxActions .button{
   padding:5px;
 }
+
+.shiftHead {
+  text-align:center;
+  font-size:1.3em;
+  font-weight:bold;
+  border-bottom:2px solid $primary-color;
+  margin-bottom:10px;
+}
+
+.shiftEntry {
+  margin:3px 5px;
+  border-left:2px solid $primary-color;
+  border-bottom:2px solid $primary-color;
+}
+
+.shiftEntry .timeSpan {
+  font-weight:bold;
+}
+
+.shiftEntry .personBox {
+  font-weight:bold;
+}
+
+.shiftButtons button {
+  color:$primary-color;
+}
+
+.chooseSecHead {
+  background-color:$primary-color;
+  color:white;
+  text-align:center;
+  font-size:1.3em;
+  font-weight:bold;
+}
+
+.chooseShiftBlock {
+  border-left:2px solid $primary-color;
+  border-bottom:2px solid $primary-color;
+  margin:5px;
+  font-weight:bold;
+}
+
+.shiftCounter {
+  text-align:center;
+  font-size:5em;
+  font-weight:bold;
+}

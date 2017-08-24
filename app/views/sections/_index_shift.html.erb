@@ -1,0 +1,38 @@
+<div class="small-12 column">
+  <div class="row shiftEntry">
+    <% if shift.council_id %> <% ccc = Council.find(shift.council_id) %> <% end %>
+    <div class="small-4 column timeSpan" <% if ccc %> style="color:#<%= ccc.color %>" <% end %> >
+      <%= shift.start.to_s(:time) %> -- <%= shift.ende.to_s(:time) %>
+        <span style="color:black"><% if ccc %> ( <%= ccc.shortcut %> ) </span>
+      <% end %>
+    </div>
+    <div class="small-6 column personBox">
+      <% if shift.person_id %>
+        <% p = Person.find(shift.person_id) %>
+        <%= link_to p.name, p %>
+      <% else %> 
+        leer
+      <% end %>
+    </div>
+    <div class="small-2 column shiftButtons">
+      <% if canUse("ShiftsController","update") %>
+        <button data-open="editShiftModal<%= shift.id %>">
+          <%= fa_icon "pencil 2x"%>
+        </button>
+      <% end %>
+      
+      <% if canUse("ShiftsController","destroy") %>
+        <%= link_to fa_icon("trash 2x"), [@section,shift], :confirm => "Sure?", :method => :delete %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<div class="reveal" id="editShiftModal<%= shift.id %>" data-reveal>
+  <%= render :template => 'shifts/edit', locals:{:shift => shift} %>
+
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

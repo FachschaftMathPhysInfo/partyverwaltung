@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170822143144) do
+ActiveRecord::Schema.define(version: 20170822161145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20170822143144) do
   create_table "bugs", force: :cascade do |t|
     t.string "name"
     t.text "text"
-    t.integer "type"
+    t.integer "typ"
     t.integer "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -96,6 +96,16 @@ ActiveRecord::Schema.define(version: 20170822143144) do
     t.text "text"
     t.boolean "visible"
     t.integer "party_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "shifts", force: :cascade do |t|
+    t.time "start"
+    t.time "ende"
+    t.integer "person_id"
+    t.integer "section_id"
+    t.integer "council_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

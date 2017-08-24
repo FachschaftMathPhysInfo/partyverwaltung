@@ -1,6 +1,7 @@
 class SectionsController < ApplicationController
   def index
-    @sections=Section.where("party_id = #{getActiveParty().id}").order('name ASC')
+    @sections=Section.where("party_id = ?",getActiveParty().id).order('name ASC')
+    @councils = Council.all.order("name ASC")
   end
   
   def create
@@ -36,6 +37,10 @@ class SectionsController < ApplicationController
   def show
     @section=Section.find(params[:id])
     
+    #SCHICHTEN
+    @shifts = @section.shifts.order("start-interval '8 hours' ASC")#.joins(:council)
+    #@shifts=Shift.joins(:council).select("shifts.*, councils.color as color").order("start-interval '8 hours' ASC,council_id,id").where("shifts.section_id=#{@section.id}")
+    #BEREICHSLEITER
     bls = @section.section_managers
     @bl = []
     bls.each do |b|
@@ -58,6 +63,6 @@ class SectionsController < ApplicationController
   
   private
   def section_params
-    params.require(:section).permit(:name)
+    params.require(:section).permit(:name, :text)
   end
 end

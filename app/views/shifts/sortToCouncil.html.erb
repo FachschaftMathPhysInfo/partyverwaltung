@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="small-12 column">
+    <div class="row chooseShiftBlock">
+      <div class="small-2 column">
+       start -- ende
+      </div>
+      <div class="small-9 column">
+        Schieber pro Fachschaft
+      </div>
+      <div class="small-1 column">
+        Rest
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  
+  <div class="small-12 end column">
+    <%= form_tag shifts_sortToCouncil_path do %>
+      <% @sections.each do |s| %>
+        <div class="row">
+          <div class="chooseSecHead"><%= s.name %></div>
+          <%= render partial: "shift_sorter", collection: @oriData[s.name], as: :shiftGroup, locals:{:section => s.id}%>
+        </div>
+      <% end %>
+      <%= submit_tag "Zuordnen", :class=>"expanded button", :id=>"sortSubmit" %>
+    <% end %>
+  </div>
+  
+</div>
