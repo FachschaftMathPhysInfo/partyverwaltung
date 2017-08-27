@@ -38,7 +38,21 @@
     <div class="row" id="curParty">
       <div class="small-12 medium-8 column">
         <div class="headi">Schichten</div>
-        
+        <% @shifts.each do |s| %>
+          <div class="blBox">
+            <%= link_to s, :style=>"display:block;" do %>
+              <span style="font-weight:bold;padding:0px 20px;">
+                <%= s.name %>
+              </span>
+              <%= s.start.to_s(:time) %> -- <%= s.ende.to_s(:time) %>
+            <% end %>
+            <div class="boxActions">
+              <% if canUse("ShiftsController","remove") %>
+                <%= link_to fa_icon("trash"), shifts_remove_path(:id => s.shiftid, :person_id => params[:id], :from_person => true), :method => :post, :class=>"button expanded" %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
       </div>
       
       <div class="small-12 medium-4 column">

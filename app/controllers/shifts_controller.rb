@@ -16,11 +16,34 @@ class ShiftsController < ApplicationController
   def update
     @shift = Shift.find(params[:id])
     @shift.update(shift_params)
-    @shift.update(:council_id => params[:council_id])
+    if params.has_key?(:council_id)
+      @shift.update(:council_id => params[:council_id])
+    end
     
     respond_to do |format|
       flash[:success] = 'Schicht was successfully updated.'
       format.html { redirect_to section_path(@shift.section_id) }
+    end
+  end
+  
+  def insert
+    @shift = Shift.find(params[:id])
+    @shift.update(:person_id => params[:person_id])
+    respond_to do |format|
+      flash[:success] = 'Schicht was successfully updated.'
+      format.html { redirect_to section_path(@shift.section_id) }
+    end
+  end
+  
+  def remove
+    @shift = Shift.find(params[:id])
+    @shift.update(:person_id => nil )
+    respond_to do |format|
+      if params[:from_person]
+        format.html { redirect_to person_path(params[:person_id]) }
+      else
+        format.html { redirect_to section_path(@shift.section_id) }
+      end
     end
   end
   

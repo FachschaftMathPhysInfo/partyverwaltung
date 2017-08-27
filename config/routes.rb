@@ -26,6 +26,8 @@ Rails.application.routes.draw do
 #SHIFTS
   get 'shifts/sortToCouncil'
   post 'shifts/sortToCouncil'
+  post 'shifts/insert'
+  post 'shifts/remove'
 #RESOURCES
   resources :people do
     resources :notes
