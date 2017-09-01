@@ -85,3 +85,24 @@
 .blBox .boxActions .button{
   padding:5px;
 }
+
+.hist_head {
+  font-weight:bold;
+  font-size:1.3em;
+  margin-top:10px;
+  text-align:center;
+  background-color:$primary-color;
+  color:white;
+}
+
+#histBlock .headi {
+  text-align:center;
+  font-size:1.2em;
+  font-weight:bold;
+  
+  background: $primary-color; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(180deg, $primary-color, #eeeeee, white); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(180deg, $primary-color, #eeeeee, white); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(180deg, $primary-color, #eeeeee, white); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(180deg, $primary-color, #eeeeee, white); /* Standard syntax */
+}

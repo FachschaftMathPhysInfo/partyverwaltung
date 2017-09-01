@@ -31,7 +31,11 @@ class ShiftsController < ApplicationController
     @shift.update(:person_id => params[:person_id])
     respond_to do |format|
       flash[:success] = 'Schicht was successfully updated.'
-      format.html { redirect_to section_path(@shift.section_id) }
+      if params[:from_person]
+        format.html { redirect_to person_path(params[:person_id]) }
+      else
+        format.html { redirect_to section_path(@shift.section_id) }
+      end
     end
   end
   

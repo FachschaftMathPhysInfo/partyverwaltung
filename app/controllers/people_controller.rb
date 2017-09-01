@@ -45,6 +45,9 @@ class PeopleController < ApplicationController
     @notes = @person.notes.order('created_at DESC')
     @bls = Section.joins(:section_managers).select("sections.*").order("name ASC")
     @shifts = Section.joins(:shifts).select("sections.id as id, sections.name, shifts.start, shifts.ende, shifts.id as shiftid").where("sections.party_id = ? AND shifts.person_id = ?",getActiveParty().id,params[:id]).order("start-interval '8 hours' ASC")
+    
+    @historyBL = findBlHist(@person.id)
+    @historyShift = findBLShift(@person.id)
   end
   
   def change_status
@@ -79,5 +82,15 @@ class PeopleController < ApplicationController
   private
   def person_params
     params.require(:person).permit(:vname, :nname, :mail, :shirt, :typ)
+  end
+  
+  def findBlHist(pid)
+    @bl=SectionManager.select("section_id").where("person_id=?",pid)
+    @h_bl=Section.joins(:party).select('sections.name as name,parties.jahr as jahr, parties.semester as semester').where("sections.id IN (?)", @bl).order("jahr DESC, semester DESC")
+  end
+  
+  def findBLShift(pid)
+    shifts = Shift.select("section_id").where("person_id = ?",pid)
+    hist = Section.joins(:party).select('sections.name as name,parties.jahr as jahr, parties.semester as semester').where("sections.id IN (?)",shifts).order("jahr DESC, semester DESC")
   end
 end

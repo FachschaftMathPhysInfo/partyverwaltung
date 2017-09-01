@@ -70,8 +70,22 @@
       </div>
     </div>
     
-    <div class="row" style="border-top:2px solid black;">
-      History
+    <div class="row" id="histBlock">
+      <div class="hist_head">History</div>
+      
+      <div class="small-12 medium-6 column">
+        <div class="headi">Schichten</div>
+        <div class="row">
+          <%= render partial: "hist_entry", collection: @historyShift, as: :entry %>
+        </div>
+      </div>
+      
+      <div class="small-12 medium-6 column">
+        <div class="headi">Bereichsleiter</div>
+        <div class="row">
+          <%= render partial: "hist_entry", collection: @historyBL, as: :entry %>
+        </div>
+      </div>
     </div>
     
   </div>

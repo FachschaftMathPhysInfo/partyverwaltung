@@ -1,0 +1,18 @@
+<% msections = Section.where("party_id = ?",getActiveParty().id).order('name ASC') %>
+
+<div class="row">
+  <% msections.each do |sec| %>
+    <% mshifts = Shift.where("section_id = ? AND person_id IS NULL",sec.id).order("start-interval '8 hours' ASC") %>
+    <% unless mshifts.empty? %>
+      <div class="small-12 medium-3 column">
+        <div><%= sec.name %> </div>
+        <% mshifts.each do |shif| %>
+          <%= link_to shifts_insert_path(:id => shif.id, :person_id => person_id, :from_person => true), :class => "blBox", :style => "display:block", :method => :post do %>
+            <%= shif.start.to_s(:time) %> -- <%= shif.ende.to_s(:time) %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+  <div class="small-12 medium-3 end column">&nbsp;</div>
+</div>
