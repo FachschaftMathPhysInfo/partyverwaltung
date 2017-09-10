@@ -48,13 +48,13 @@
   </button>
 </div>
 
-<div class="reveal" id="showShirtModal<%= shirt.id %>" data-reveal>
-  <div class="revealImg">
+<div class="reveal large" id="showShirtModal<%= shirt.id %>" data-reveal>
+  <div class="revImg">
     <img src="<%= url_for(:controller => "shirts", 
                       :action => "getImage", 
                       :id => shirt.id,
                       :style => :original) %>" />
-    <div class="revealText">
+    <div class="revText">
       <%= simple_format shirt.motto %>
     </div>
   </div>
