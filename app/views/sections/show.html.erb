@@ -91,10 +91,13 @@
       <button class="button expanded" data-open="newShiftModal"><%= fa_icon "plus 2x" %></button>
     <% end %>
   </div>
+  
+  <div class="small-12 medium-11 medium-offset-1 column">
+    <div class="histHead">History</div>
+    <%= render partial: "history" %>
+  </div>
+
 </div>
-
-
-
 
 <div class="reveal" id="newSectionManagerModal" data-reveal>
   <%= render :template => 'section_managers/new' %>

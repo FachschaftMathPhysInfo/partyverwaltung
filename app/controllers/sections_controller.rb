@@ -50,6 +50,27 @@ class SectionsController < ApplicationController
     end
     
     @bl.sort!{|x,y| x[2].name <=> y[2].name}
+    
+    
+    ######## history stuff
+    #saves user ids connected to party
+    @histData = {}
+    @parties=Party.order('jahr DESC, semester DESC').all #where("id != #{@party_active.id}")
+    @parties.each do |p| #cycle through all parties
+        #get section by name from these parties
+        tmp_section=Section.where("name='#{@section.name}' AND party_id=#{p.id}").first
+            #get people from this section
+            people_hash={}
+            if tmp_section
+                tmp_section.shifts.each do |s|
+                    if s.person_id
+                        tmp_person=Person.find(s.person_id)
+                        people_hash[tmp_person.id]=tmp_person.name
+                    end
+                end
+            end
+        @histData[p.id] = people_hash
+    end
   end
   
   def destroy

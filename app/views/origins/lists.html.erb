@@ -1,0 +1,54 @@
+<div class="row" style="margin-bottom:10px;">
+  <div class="small-12 medium-6 column">
+    <div class="listOverview"> Extern </div>
+    
+    <% if canUse('OriginsController','list_empty') %>
+      <div class="row listEntry">
+        <div class="small-2 column">
+          <button data-open="emptyModal">
+            <%= fa_icon "list 5x" %>
+          </button>
+        </div>
+        <div class="small-10 column content">
+          <div class="head">Leere Liste</div>
+            Liste mit allen Schichten einer Fachschaft - Leer
+        </div>
+      </div>
+    <% end %>
+    
+    <% if canUse('OriginsController','list_filled') %>
+      <div class="row listEntry">
+        <div class="small-2 column">
+          <button data-open="emptyModal">
+            <%= fa_icon "list 5x" %>
+          </button>
+        </div>
+        <div class="small-10 column content">
+          <div class="head">Leere Liste</div>
+            Liste mit allen Schichten einer Fachschaft - Leer
+        </div>
+      </div>
+    <% end %>
+    
+  </div>
+  <div class="small-12 medium-6 column">
+    <div class="listOverview"> Intern </div>
+  </div>
+</div>
+
+
+<div class="reveal" id="emptyModal" data-reveal>
+  <%= form_tag list_empty_path(:format => :pdf) do%>
+    <fieldset class="fieldset councSelect">
+      <legend>Fachschaft</legend>
+      <% Council.all.each do |c| %>
+        <%= radio_button_tag :counc, c.name %><label for="counc_<%= c.name %>"><%= c.name %></label>
+      <% end %>
+    </fieldset>
+  <%= submit_tag "Generieren", :class=>"expanded button" %>
+  <% end %>
+
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

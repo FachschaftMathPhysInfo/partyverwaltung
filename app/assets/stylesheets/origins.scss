@@ -22,3 +22,34 @@
   text-align:center;
   margin:10px 0px;
 }
+
+.listOverview {
+  background-color:$primary-color;
+  font-size:1.2em;
+  font-weight:bold;
+  color:white;
+  text-align:center;
+}
+
+.listEntry button {
+  color:$primary-color;
+}
+
+.listEntry .content {
+  border-left:2px solid $primary-color;
+  border-bottom:2px solid $primary-color;
+  padding:10px;
+}
+
+.listEntry .content .head{
+  font-size:1.2em;
+  font-weight:bold;
+  padding-left:10px;
+  border-bottom:2px solid $primary-color;
+}
+
+.councSelect input[type=radio] {
+  background-color:red;
+  width:10p;
+  color:pink;
+}

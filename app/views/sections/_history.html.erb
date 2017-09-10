@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="small-12 medium-4 column histButtons">
+    <% @parties.each do |pp| %>
+      <%= link_to pp.name, "javascript:void(0);", class:"history_link", :'data-party' => pp.id %>
+    <% end %>
+  </div>
+  <div class="small-12 medium-8 column" id="data_output">
+    <% @parties.each do |pp| %>
+      <div class="row histParty" id="<%= pp.id %>">
+        <div class="hhname"> <%= Party.find(pp.id).name %> </div>
+        <% @histData.each do |k,v| %>
+          <% if k == pp.id %>
+            <% v.each do |l,w| %>
+              <div class="small-12 medium-4 column data_entry">
+                  <%= link_to w, person_path(:id => l) %>
+              </div>
+            <% end %>
+            <div class="small-12 medium-4 column end data_entry">
+              &nbsp;
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      
+    <% end %>
+  </div>
+</div>

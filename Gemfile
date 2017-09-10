@@ -53,6 +53,8 @@ gem "highcharts-rails"
 gem "font-awesome-rails"
 #shirts
 gem 'paperclip'
+#latex
+gem 'rails-latex'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

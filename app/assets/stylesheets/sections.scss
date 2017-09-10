@@ -50,7 +50,7 @@
 
 .shiftEntry .timeSpan {
   font-weight:bold;
-  background-color:#bbbbbb;
+  background-color:rgba($primary-color,0.5);
   padding-bottom:10px;
 }
 
@@ -80,5 +80,41 @@
 .shiftCounter {
   text-align:center;
   font-size:5em;
+  font-weight:bold;
+}
+
+//History
+
+.histHead {
+  text-align:center;
+  font-size:1.3em;
+  font-weight:bold;
+  border-bottom:2px solid $primary-color;
+  margin-bottom:10px;
+  background-color:$primary-color;
+  color:white;
+}
+
+.histButtons a {
+  color:white;
+  font-weight:bold;
+  text-align:center;
+  background-color:$primary-color;
+  display:block;
+  margin:5px 0px;
+}
+
+.histButton:hover {
+  color:pink;
+}
+
+.histParty {
+  border:1px solid $primary-color;
+  margin:5px 0px;
+}
+
+.hhname {
+  text-align:center;
+  font-size:1.1em;
   font-weight:bold;
 }

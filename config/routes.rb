@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   root 'origins#index'
   get 'origins/administration', :as => :administration
   get 'origins/bad_boy', :as => :bad_boy
+  get 'origins/lists'
+  post 'origins/list_empty', :as => :list_empty
 #PARTIES
   match '/parties/activate', :to => 'parties#activate', :via => [:get, :post]
   post '/parties/copy'

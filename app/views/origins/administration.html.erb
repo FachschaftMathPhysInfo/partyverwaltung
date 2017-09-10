@@ -46,6 +46,17 @@
         <% end %>
       <% end %>
       
+      <% if canUse("OriginsController","lists") %>      
+        <%= link_to origins_lists_path do %>
+          <div class="small-4 column linkEntry">
+            <%= fa_icon "list 5x" %>
+            <p>
+              Listen
+            </p>
+          </div>
+        <% end %>
+      <% end %>
+      
     </div>
     
     <div class="row">

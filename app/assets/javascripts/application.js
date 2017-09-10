@@ -21,7 +21,12 @@
 // to get the new features in 2.3.0:
 //= require highcharts/highcharts-more
 
-//$(function(){ $(document).foundation(); });
+$(function(){ $(document).foundation(); });
 $(document).on('turbolinks:load', function() {
   $(function(){ $(document).foundation(); });
 });
+
+$(document).on('turbolinks:load', function() {
+  $('input[type="submit"]').removeAttr('disabled');
+});
+      
