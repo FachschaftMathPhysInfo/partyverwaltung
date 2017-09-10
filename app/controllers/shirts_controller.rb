@@ -54,6 +54,10 @@ class ShirtsController < ApplicationController
     @shirt.photo=nil
     @shirt.save
     @shirt.destroy
+    
+    #manual delete
+    sql = "DELETE FROM photos WHERE shirt_id = #{params[:id]}"
+    records_array = ActiveRecord::Base.connection.execute(sql)
    
     respond_to do |format|
       format.html { redirect_to(shirts_path) }
