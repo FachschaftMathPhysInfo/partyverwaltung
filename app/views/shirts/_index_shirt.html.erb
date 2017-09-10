@@ -1,7 +1,11 @@
 <div class="small-12 medium-4 column imgCont">
   <div class="thumbImg">
     <button data-toggle="showShirtModal<%= shirt.id %>">
-      <%= image_tag shirt.photo.url(:thumb), :height=>"300" %>
+     
+      <img src="<%= url_for(:controller => "shirts", 
+                      :action => "getImage", 
+                      :id => shirt.id,
+                      :style => :thumb) %>" />
     </button>
     
     <div class="imgLabel">
@@ -37,7 +41,7 @@
 </div>
 
 <div class="reveal" id="editShirtModal<%= shirt.id %>" data-reveal>
-  <%= render partial: "shirt_form", locals: {shirt: shirt, buttonText: "Erstellen"} %>
+  <%= render partial: "shirt_form", locals: {shirt: shirt, buttonText: "Updaten"} %>
 
   <button class="close-button" data-close aria-label="Close modal" type="button">
     <span aria-hidden="true">&times;</span>
@@ -45,7 +49,15 @@
 </div>
 
 <div class="reveal" id="showShirtModal<%= shirt.id %>" data-reveal>
-  <%= image_tag shirt.photo.url(:original) %>
+  <div class="revealImg">
+    <img src="<%= url_for(:controller => "shirts", 
+                      :action => "getImage", 
+                      :id => shirt.id,
+                      :style => :original) %>" />
+    <div class="revealText">
+      <%= simple_format shirt.motto %>
+    </div>
+  </div>
 
   <button class="close-button" data-close aria-label="Close modal" type="button">
     <span aria-hidden="true">&times;</span>
@@ -55,10 +67,10 @@
 <div class="dropdown-pane top shirtDrop" id="dropdown<%= shirt.id %>" data-dropdown data-auto-focus="true">
   <div class="row">
     <div class="small-6 column">
-      <%= link_to "Original", shirt_download_path(shirt, :what => :original), :class=>"button expanded", :method => :post %>
+      <%= link_to "Original", shirt_download_path(shirt, :style => :original), :class=>"button expanded", :method => :post %>
     </div>
     <div class="small-6 column">
-      <%= link_to "PNG", shirt_download_path(shirt, :what => :raster), :class=>"button expanded", :method => :post %>
+      <%= link_to "PNG", shirt_download_path(shirt, :style => :raster), :class=>"button expanded", :method => :post %>
     </div>
   </div>
 </div>

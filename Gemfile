@@ -46,13 +46,14 @@ gem 'jbuilder', '~> 2.5'
 #search autocomplete
 gem 'typeahead-rails'
 #Framework
-gem 'foundation-rails'
+gem 'foundation-rails', '>= 6.4.1.2'
 #charts
 gem "highcharts-rails"
 #nice
 gem "font-awesome-rails"
 #shirts
 gem 'paperclip'
+gem "paperclip_database",:git => "git://github.com/pwnall/paperclip_database.git", :branch => "rails5"
 #latex
 gem 'rails-latex'
 

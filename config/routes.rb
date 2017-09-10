@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   post '/parties/copy'
 #SHIRTS
   post 'shirt/:id/download' => 'shirts#download', :as => :shirt_download
+  get 'shirts/getImage'
 #SHIFTS
   get 'shifts/sortToCouncil'
   post 'shifts/sortToCouncil'
