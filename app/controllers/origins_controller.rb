@@ -24,7 +24,7 @@ class OriginsController < ApplicationController
     @data = {}
     
     sections.each do |s|
-      shifts = Shift.where("section_id = ? AND council_id = ?", s.id, council.id).order('start DESC')
+      shifts = Shift.where("section_id = ? AND council_id = ?", s.id, council.id).order("start-interval '8 hours' ASC")#.order('start DESC')
       unless shifts.empty?
         @data[s.name] = []
         shifts.each do |ss|
@@ -32,11 +32,137 @@ class OriginsController < ApplicationController
         end
       end
     end
+    
+    @orient = "landscape"
 
     respond_to do |format|
       format.pdf {render 'empty_list'}
       format.html {redirect_to (origins_lists_path)}
     end  
   end
+  
+  def list_filled
+    council = Council.where("name = ?", params[:counc]).first
+    
+    sections=Section.where("party_id = ? AND visible=true", getActiveParty().id).order('name')
+    
+    @data = {}
+    
+    sections.each do |s|
+      shifts = Shift.where("section_id = ? AND council_id = ?", s.id, council.id).order("start-interval '8 hours' ASC")#.order('start DESC, person_id')
+      unless shifts.empty?
+        @data[s.name] = []
+        shifts.each do |ss|
+          input = [ ss.start.to_s(:time), ss.ende.to_s(:time) ]
+          if ss.person_id
+            perso = Person.find(ss.person_id)
+            input << perso.vname
+            input << perso.nname
+            input << perso.shirt
+            input << perso.typ
+          else
+            input << ""
+            input << ""
+            input << ""
+            input << ""
+          end
+          @data[s.name] << input
+        end
+      end
+    end
+    
+    @orient = "landscape"
 
+    respond_to do |format|
+      format.pdf {render 'filled_list'}
+      format.html {redirect_to (origins_lists_path)}
+    end  
+  end
+  
+  def list_needy
+    council = Council.where("name = ?", params[:counc]).first
+    
+    sections=Section.where("party_id = ? AND visible=true", getActiveParty().id).order('name')
+    
+    @data = {}
+    
+    sections.each do |s|
+      shifts = Shift.where("section_id = ? AND council_id = ?", s.id, council.id).order("start-interval '8 hours' ASC")#.order('start DESC, person_id')
+      checkShift = shifts.select{|x| x.person_id == nil}
+      unless checkShift.empty?
+        @data[s.name] = []
+        shifts.each do |ss|
+          input = [ ss.start.to_s(:time), ss.ende.to_s(:time) ]
+          if ss.person_id
+            perso = Person.find(ss.person_id)
+            input << perso.vname
+            input << perso.nname
+            input << perso.shirt
+            input << perso.typ
+          else
+            input << ""
+            input << ""
+            input << ""
+            input << ""
+          end
+          @data[s.name] << input
+        end
+      end
+    end
+    
+    @orient = "landscape"
+
+    respond_to do |format|
+      format.pdf {render 'filled_list'}
+      format.html {redirect_to (origins_lists_path)}
+    end  
+  end
+
+  def list_needy_clear
+    council = Council.where("name = ?", params[:counc]).first
+    
+    sections=Section.where("party_id = ? AND visible=true", getActiveParty().id).order('name')
+    
+    @data = {}
+    
+    sections.each do |s|
+      shifts = Shift.where("section_id = ? AND council_id = ? AND person_id IS NULL", s.id, council.id).order("start-interval '8 hours' ASC")#.order('start DESC')
+      unless shifts.empty?
+        @data[s.name] = []
+        shifts.each do |ss|
+          @data[s.name] << [ ss.start.to_s(:time), ss.ende.to_s(:time) ]
+        end
+      end
+    end
+    
+    @orient = "landscape"
+
+    respond_to do |format|
+      format.pdf {render 'empty_list'}
+      format.html {redirect_to (origins_lists_path)}
+    end  
+  end
+  
+  def list_section
+    sections=Section.where("party_id = ?", getActiveParty().id).order('name')
+    
+    @data = {}
+    
+    sections.each do |s|
+      shifts = Shift.joins(:person).select("people.vname as name").where("section_id = ?", s.id).order("vname,nname ASC")
+      unless shifts.empty?
+        @data[s.name] = []
+        shifts.each do |ss|
+          @data[s.name] << ss.name
+        end
+      end
+    end
+    
+    @orient = "portrait"
+    
+    respond_to do |format|
+      format.pdf {render 'section_list'}
+      format.html {redirect_to (origins_lists_path)}
+    end
+  end
 end

@@ -11,7 +11,7 @@
         </div>
         <div class="small-10 column content">
           <div class="head">Leere Liste</div>
-            Liste mit allen Schichten einer Fachschaft - Leer
+            Liste mit allen Schichten einer Fachschaft - komplett Leer
         </div>
       </div>
     <% end %>
@@ -19,13 +19,41 @@
     <% if canUse('OriginsController','list_filled') %>
       <div class="row listEntry">
         <div class="small-2 column">
-          <button data-open="emptyModal">
+          <button data-open="filledModal">
             <%= fa_icon "list 5x" %>
           </button>
         </div>
         <div class="small-10 column content">
-          <div class="head">Leere Liste</div>
-            Liste mit allen Schichten einer Fachschaft - Leer
+          <div class="head">Gefüllte Liste</div>
+            Liste mit allen Schichten einer Fachschaft - Gefüllt
+        </div>
+      </div>
+    <% end %>
+    
+    <% if canUse('OriginsController','list_needy') %>
+      <div class="row listEntry">
+        <div class="small-2 column">
+          <button data-open="needyModal">
+            <%= fa_icon "list 5x" %>
+          </button>
+        </div>
+        <div class="small-10 column content">
+          <div class="head">Gefüllte Liste - Needy</div>
+            Zeigt nur Bereiche mit noch freien Schichten an - Gefüllt
+        </div>
+      </div>
+    <% end %>
+    
+    <% if canUse('OriginsController','list_needy_clear') %>
+      <div class="row listEntry">
+        <div class="small-2 column">
+          <button data-open="needyClearModal">
+            <%= fa_icon "list 5x" %>
+          </button>
+        </div>
+        <div class="small-10 column content">
+          <div class="head">Gefüllte Liste - Clear Needy</div>
+            Zeigt nur noch freien Schichten an
         </div>
       </div>
     <% end %>
@@ -33,6 +61,20 @@
   </div>
   <div class="small-12 medium-6 column">
     <div class="listOverview"> Intern </div>
+  
+    <% if canUse('OriginsController','list_section') %>
+      <div class="row listEntry">
+        <div class="small-2 column">
+          <%= link_to list_section_path(:format => :pdf), :method => :post  do %>
+            <%= fa_icon "list 5x" %>
+          <% end %>
+        </div>
+        <div class="small-10 column content">
+          <div class="head">Bereichsliste</div>
+            Liste mit allen Schichten einer Fachschaft - komplett Leer
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
 
@@ -52,3 +94,52 @@
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
+
+<div class="reveal" id="filledModal" data-reveal>
+  <%= form_tag list_filled_path(:format => :pdf) do%>
+    <fieldset class="fieldset councSelect">
+      <legend>Fachschaft</legend>
+      <% Council.all.each do |c| %>
+        <%= radio_button_tag :counc, c.name %><label for="counc_<%= c.name %>"><%= c.name %></label>
+      <% end %>
+    </fieldset>
+  <%= submit_tag "Generieren", :class=>"expanded button" %>
+  <% end %>
+
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="reveal" id="needyModal" data-reveal>
+  <%= form_tag list_needy_path(:format => :pdf) do%>
+    <fieldset class="fieldset councSelect">
+      <legend>Fachschaft</legend>
+      <% Council.all.each do |c| %>
+        <%= radio_button_tag :counc, c.name %><label for="counc_<%= c.name %>"><%= c.name %></label>
+      <% end %>
+    </fieldset>
+  <%= submit_tag "Generieren", :class=>"expanded button" %>
+  <% end %>
+
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="reveal" id="needyClearModal" data-reveal>
+  <%= form_tag list_needy_clear_path(:format => :pdf) do%>
+    <fieldset class="fieldset councSelect">
+      <legend>Fachschaft</legend>
+      <% Council.all.each do |c| %>
+        <%= radio_button_tag :counc, c.name %><label for="counc_<%= c.name %>"><%= c.name %></label>
+      <% end %>
+    </fieldset>
+  <%= submit_tag "Generieren", :class=>"expanded button" %>
+  <% end %>
+
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+

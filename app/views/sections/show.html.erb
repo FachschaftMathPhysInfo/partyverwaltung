@@ -26,6 +26,10 @@
                 <td><%= fa_icon "tasks" %> unzugeordnete Schichten</td>
                 <td><%= @shifts.select{ |x| x.council_id == nil }.size %></td>
               </tr>
+              <tr>
+                <td><%= fa_icon "eye" %> Sichtbarkeit</td>
+                <td><%= @section.visible %></td>
+              </tr>
             </table>
           </div>
         </div>

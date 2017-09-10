@@ -20,6 +20,10 @@ Rails.application.routes.draw do
   get 'origins/bad_boy', :as => :bad_boy
   get 'origins/lists'
   post 'origins/list_empty', :as => :list_empty
+  post 'origins/list_filled', :as => :list_filled
+  post 'origins/list_needy', :as => :list_needy
+  post 'origins/list_needy_clear', :as => :list_needy_clear
+  post 'origins/list_section', :as => :list_section
 #PARTIES
   match '/parties/activate', :to => 'parties#activate', :via => [:get, :post]
   post '/parties/copy'
