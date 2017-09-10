@@ -20,4 +20,3 @@
 
 #ignore shirts files
 /public/system/*
-/config/database.yml
