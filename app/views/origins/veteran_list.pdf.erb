@@ -1,0 +1,15 @@
+\large
+
+\rowcolors{2}{gray!25}{white}
+\renewcommand{\arraystretch}{1.2}
+
+\begin{center}
+  \begin{tabular}{L{12cm}|L{5cm}}
+    \rowcolor{gray!50}
+    Name & Shirt \\
+    <% @vets.each do |v| %>  
+      <%= v.name %> & <%= v.shirt.to_s+" ("+v.typ.to_s+")" %>\\
+    <% end %>
+  \end{tabular}
+\end{center}
+

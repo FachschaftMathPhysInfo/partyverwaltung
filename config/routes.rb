@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   post 'origins/list_needy', :as => :list_needy
   post 'origins/list_needy_clear', :as => :list_needy_clear
   post 'origins/list_section', :as => :list_section
+  post 'origins/list_shirt', :as => :list_shirt
+  post 'origins/list_veteran', :as => :list_veteran
 #PARTIES
   match '/parties/activate', :to => 'parties#activate', :via => [:get, :post]
   post '/parties/copy'

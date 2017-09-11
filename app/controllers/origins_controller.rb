@@ -165,4 +165,39 @@ class OriginsController < ApplicationController
       format.html {redirect_to (origins_lists_path)}
     end
   end
+  
+  def list_shirt
+    sections=Section.where("party_id = ?", getActiveParty().id).order('name')
+    
+    @data = {}
+    
+    sections.each do |s|
+      shifts = Shift.joins(:person).select("people.vname as vname, people.nname as nname,people.shirt as shirt, people.typ as typ").where("section_id = ?", s.id).order("vname,nname ASC")
+      unless shifts.empty?
+        @data[s.name] = []
+        shifts.each do |ss|
+          @data[s.name] << [ss.vname.to_s+" "+ss.nname.to_s, ss.shirt.to_s+" ("+ss.typ.to_s+")"]
+        end
+        @data[s.name].uniq!
+      end
+    end
+    
+    @orient = "portrait"
+    
+    respond_to do |format|
+      format.pdf {render 'shirt_list'}
+      format.html {redirect_to (origins_lists_path)}
+    end
+  end
+  
+  def list_veteran
+    @vets = Person.joins(:status).select("people.*").where("statuses.value = 1").order("vname,nname ASC")
+    
+    @orient = "portrait"
+    
+    respond_to do |format|
+      format.pdf {render 'veteran_list'}
+      format.html {redirect_to (origins_lists_path)}
+    end
+  end
 end

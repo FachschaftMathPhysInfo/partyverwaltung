@@ -1,0 +1,21 @@
+\large
+
+\rowcolors{2}{gray!25}{white}
+\renewcommand{\arraystretch}{1.2}
+
+<% @data.each do |d,s| %>
+  \begin{center}
+    \Large\bfseries
+    <%= d %>
+  \end{center}
+  
+  \begin{center}
+    \begin{tabular}{L{12cm}|L{5cm}}
+    \rowcolor{gray!50}
+    Name & Shirt \\
+    <% s.each do |ss| %>
+      <%= ss[0] %> & <%= ss[1] %> \\
+    <% end %>
+    \end{tabular}
+  \end{center}
+<% end %>

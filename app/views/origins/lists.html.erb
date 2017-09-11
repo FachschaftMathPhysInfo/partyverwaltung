@@ -75,6 +75,35 @@
         </div>
       </div>
     <% end %>
+    
+    <% if canUse('OriginsController','list_shirt') %>
+      <div class="row listEntry">
+        <div class="small-2 column">
+          <%= link_to list_shirt_path(:format => :pdf), :method => :post  do %>
+            <%= fa_icon "list 5x" %>
+          <% end %>
+        </div>
+        <div class="small-10 column content">
+          <div class="head">Shirtliste</div>
+            Sortiert nach Bereichen.
+        </div>
+      </div>
+    <% end %>
+    
+    <% if canUse('OriginsController','list_veteran') %>
+      <div class="row listEntry">
+        <div class="small-2 column">
+          <%= link_to list_veteran_path(:format => :pdf), :method => :post  do %>
+            <%= fa_icon "list 5x" %>
+          <% end %>
+        </div>
+        <div class="small-10 column content">
+          <div class="head">Veteranenliste</div>
+            Nach Alphabet.
+        </div>
+      </div>
+    <% end %>
+    
   </div>
 </div>
 
