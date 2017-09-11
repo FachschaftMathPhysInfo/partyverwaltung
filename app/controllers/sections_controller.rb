@@ -34,6 +34,22 @@ class SectionsController < ApplicationController
     end
   end
   
+  def change_visibility
+    @section = Section.find(params[:id])
+    ret = false
+    @section.visible ? ret = false : ret = true
+    
+    respond_to do |format|
+      if @section.update(:visible => ret)
+        flash[:success] = 'section visibility was successfully updated.'
+        format.html  { redirect_to(@section)}
+      else
+        flash[:alert] = 'Could not update section'
+        format.html { redirect_to (@section)}
+      end
+    end
+  end
+  
   def show
     @section=Section.find(params[:id])
     

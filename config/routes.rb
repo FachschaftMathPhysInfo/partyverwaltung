@@ -35,6 +35,8 @@ Rails.application.routes.draw do
   post 'shifts/sortToCouncil'
   post 'shifts/insert'
   post 'shifts/remove'
+#SECTIONS
+  get 'shifts/:id/change_visibility', :to => 'sections#change_visibility', :as => :change_visibility
 #RESOURCES
   resources :people do
     resources :notes

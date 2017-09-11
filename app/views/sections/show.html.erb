@@ -28,7 +28,12 @@
               </tr>
               <tr>
                 <td><%= fa_icon "eye" %> Sichtbarkeit</td>
-                <td><%= @section.visible %></td>
+                <% @section.visible ? htext = 'Sichtbar' : htext = 'Versteckt' %>
+                <% if canUse("SectionsController","change_visibility") %>
+                  <td><%= link_to htext, change_visibility_path %></td>
+                <% else %>
+                  <td><%= htext %></td>
+                <% end %>
               </tr>
             </table>
           </div>
