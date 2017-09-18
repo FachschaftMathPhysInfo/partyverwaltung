@@ -43,8 +43,6 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 ###OWN
-#search autocomplete
-gem 'typeahead-rails'
 #Framework
 gem 'foundation-rails', '>= 6.4.1.2'
 #charts

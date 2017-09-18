@@ -57,6 +57,17 @@
         <% end %>
       <% end %>
       
+      <% if canUse("StatisticsController","index") %>      
+        <%= link_to statistics_index_path do %>
+          <div class="small-4 column linkEntry">
+            <%= fa_icon "bar-chart 5x" %>
+            <p>
+              Statistiken
+            </p>
+          </div>
+        <% end %>
+      <% end %>
+      
     </div>
     
     <div class="row">

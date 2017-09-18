@@ -104,6 +104,20 @@
       </div>
     <% end %>
     
+    <% if canUse('OriginsController','garderobe_bons') %>
+      <div class="row listEntry">
+        <div class="small-2 column">
+          <button data-open="garderobeBonModal">
+            <%= fa_icon "ticket 5x" %>
+          </button>
+        </div>
+        <div class="small-10 column content">
+          <div class="head">Garderoben-Bons</div>
+            Nach Alphabet.
+        </div>
+      </div>
+    <% end %>
+    
   </div>
 </div>
 
@@ -172,3 +186,18 @@
   </button>
 </div>
 
+<div class="reveal" id="garderobeBonModal" data-reveal>
+  <%= form_tag garderobe_bons_path(:format => :pdf) do%>
+    <fieldset class="fieldset councSelect">
+      <legend>Bon-Werte</legend>
+      <div style="color:red">Anzahl wird auf Vielfache von 200 aufgefüllt ;)</div>
+      <%= label_tag :bonCount do %>Anzahl<%= number_field_tag :bonCount, 2000, :min => 200 %><% end %>
+      <%= label_tag :text do %>Text im Abriss-Teil<%= text_area_tag :text, "MathPhysTheo\n WS 17/18", :size => "40x2" %><% end %>
+    </fieldset>
+  <%= submit_tag "Generieren", :class=>"expanded button" %>
+  <% end %>
+
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

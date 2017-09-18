@@ -200,4 +200,24 @@ class OriginsController < ApplicationController
       format.html {redirect_to (origins_lists_path)}
     end
   end
+  
+  def garderobe_bons
+    if params[:bonCount].to_i%200 == 0
+      @bons = params[:bonCount].to_i
+    else
+      @bons = params[:bonCount].to_i + ( 200 - params[:bonCount].to_i%200 )
+    end
+    
+    @chunks = @bons / 200
+    
+    @text = params[:text].to_s.gsub("\r\n","\\newline ")
+    puts @text
+    
+    @orient = "landscape"
+    
+    respond_to do |format|
+      format.pdf {render 'garderobe_bons', layout:"bons"}
+      format.html {redirect_to (origins_lists_path)}
+    end
+  end
 end

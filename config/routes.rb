@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   post 'origins/list_section', :as => :list_section
   post 'origins/list_shirt', :as => :list_shirt
   post 'origins/list_veteran', :as => :list_veteran
+  post 'origins/garderobe_bons', :as => :garderobe_bons
 #PARTIES
   match '/parties/activate', :to => 'parties#activate', :via => [:get, :post]
   post '/parties/copy'
@@ -39,6 +40,10 @@ Rails.application.routes.draw do
   post 'shifts/remove'
 #SECTIONS
   get 'shifts/:id/change_visibility', :to => 'sections#change_visibility', :as => :change_visibility
+#STATISTICS
+  get 'statistics/index'
+  match 'statistics/shirts', :to => 'statistics#shirts', :via => [:get, :post]
+  
 #RESOURCES
   resources :people do
     resources :notes

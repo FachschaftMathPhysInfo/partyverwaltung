@@ -1,4 +1,6 @@
 class SectionsController < ApplicationController
+  #before_action do @userData = user_data end
+
   def index
     @sections=Section.where("party_id = ?",getActiveParty().id).order('name ASC')
     @councils = Council.all.order("name ASC")

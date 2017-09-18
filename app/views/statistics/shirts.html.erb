@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="small-12 medium-3 column">
+    <div>
+      <%= link_to statistics_index_path do %>
+        <%= fa_icon("chevron-left") %><%= fa_icon("chevron-left") %> Zurück
+      <% end %>
+    </div>
+    <%= form_tag statistics_shirts_path do%>
+      <fieldset class="fieldset councSelect">
+        <legend>Datenbreite auswählen</legend>
+        <table>
+          <tr>
+            <td><%= check_box_tag :all %><%= label_tag :all, "Alle Parties" %></td>
+          </tr>
+          <% Party.all.each do |p| %>
+            <tr>
+              <td><%= check_box_tag "data[#{p.id}]" %><%= label_tag "data[#{p.id}]", p.name %></td>
+            </tr>
+          <% end %>
+        </table>
+      </fieldset>
+    <%= submit_tag "Generieren", :class=>"expanded button" %>
+    <% end %>
+  </div>
+  <div class="small-12 medium-9 column">
+    <%= @hi || "blubb" %>
+    <% if request.post? %>
+      <% @helper.each do |h| %>
+        <%= h.name %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<% @latex_config={:command => 'xelatex'} %>
+\documentclass[12pt,a4paper,<%= @orient %>]{article}
+\usepackage{longtable}
+\usepackage{geometry}
+\usepackage{array}
+
+\usepackage[table]{xcolor}
+
+\usepackage{tikz}
+
+\usepackage{fontspec}
+\setmainfont{Linux Libertine O}
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
+
+\newcommand{\bon}[2]{
+  \hspace*{2.5cm} 
+  \begin{tikzpicture}
+    \draw[fill={rgb:black,1;white,4}, line width=1mm] (0,0) rectangle ++(6.5,-1.5);
+    \node[anchor=west] at (.5,-0.75) {\bfseries\fontsize{40}{48}\selectfont #1};
+    \node[anchor=west] at (3.5,-0.75) {\begin{minipage}{2.5cm}\small #2\end{minipage}};
+    
+    \draw[line width=1mm] (7.5,0) rectangle ++(18,-1.5);
+    \node[anchor=west] at (8.25,-0.75) {\bfseries\fontsize{40}{48}\selectfont #1};
+    \node[anchor=west] at (15,-0.75) {\bfseries\fontsize{40}{48}\selectfont #1};
+    \node[anchor=west] at (22,-0.75) {\bfseries\fontsize{40}{48}\selectfont #1};
+    
+    \node[anchor=west] at (11.75,-0.75) {\begin{minipage}{2.5cm}\centering\bfseries\fontsize{15}{18}\selectfont kein\\ Abholbon!\end{minipage}};
+    \node[anchor=west] at (19,-0.75) {\begin{minipage}{2.5cm}\centering\bfseries\fontsize{15}{18}\selectfont kein\\ Abholbon!\end{minipage}};
+  \end{tikzpicture}
+}
+
+\usepackage[utf8]{inputenc}
+\geometry{a4paper, top=0.5cm, bottom=0.5cm, left=0.75cm, right=0.75cm}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\begin{document}
+<%= yield %>
+\end{document}
