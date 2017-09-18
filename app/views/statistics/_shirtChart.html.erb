@@ -1,0 +1,52 @@
+<div id="shirtChart"></div>
+<script>
+Highcharts.chart('shirtChart', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Shirt-Verbrauch im Schnitt über ausgewählte Feste'
+    },
+    xAxis: {
+        categories: ['XS','S','M','L','XL','XXL'],
+        crosshair: true
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Stückzahl'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [
+    <% ['Unisex','Male fit','Girly fit'].each do |t| %>
+      <% types = {} %>
+      <% @hpp.each do |k,h|
+        types[k] = h.select{ |e| e.typ == t }
+      end %>
+      {
+          name: '<%= t %>',
+          data: [
+              <% ['XS','S','M','L','XL','XXL'].each do |z| %>
+                <%= types.map{ |k,v| v.select{|w| w.shirt == z}.length }.reduce(:+) / @parties.length %>
+                ,
+              <% end %>
+            ]
+      },
+    <% end %>
+    ]
+});
+</script>

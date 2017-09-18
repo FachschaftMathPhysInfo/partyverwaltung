@@ -17,7 +17,7 @@ class JudgesController < ApplicationController
   end
   
   def init
-    #load new
+    #load new...THIS IS ONLY CALLED BY THE RAKE TASK
     Rails.application.eager_load!
     controllers = ApplicationController.descendants
     
@@ -31,7 +31,6 @@ class JudgesController < ApplicationController
         end
       end
     end
-    redirect_to judges_index_path
   end
   
   def change

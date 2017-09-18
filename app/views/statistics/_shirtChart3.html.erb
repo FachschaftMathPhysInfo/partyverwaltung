@@ -1,0 +1,54 @@
+<div id="shirtChart3"></div>
+<script>
+Highcharts.chart('shirtChart3', {
+    chart: {
+        type: 'area'
+    },
+    title: {
+        text: 'Shirt-Verbrauch nach Fest und Größe'
+    },
+    xAxis: {
+        categories: [
+          <% @parties.each do |p| %>
+            '<%= p.name %>',
+          <% end %>
+        ],
+        tickmarkPlacement: 'on',
+        title: {
+            enabled: false
+        }
+    },
+    yAxis: {
+        title: {
+            text: 'Stückzahl'
+        }
+    },
+    tooltip: {
+        split: true,
+        valueSuffix: ' Stück'
+    },
+    plotOptions: {
+        area: {
+            stacking: 'normal',
+            lineColor: '#666666',
+            lineWidth: 1,
+            marker: {
+                lineWidth: 1,
+                lineColor: '#666666'
+            }
+        }
+    },
+    series: [
+      <% ['XS','S','M','L','XL','XXL'].each do |t| %>
+        {
+          name: '<%= t %>',
+          data: [
+            <% @parties.each do |p| %>
+              <%= @hpp[p.id].select{ |h| h.shirt == t }.length %>,
+            <% end %>
+          ]
+        },
+      <% end %>
+    ]
+});
+</script>

@@ -25,9 +25,9 @@
   <div class="small-12 medium-9 column">
     <%= @hi || "blubb" %>
     <% if request.post? %>
-      <% @helper.each do |h| %>
-        <%= h.name %>
-      <% end %>
+      <%= render partial: "shirtChart" %>
+      <%= render partial: "shirtChart2" %>
+      <%= render partial: "shirtChart3" %>
     <% end %>
   </div>
 </div>

@@ -53,9 +53,9 @@ ActiveRecord::Schema.define(version: 20170910140814) do
     t.text "text"
     t.integer "person_id"
     t.integer "party_id"
+    t.string "author"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "author", limit: 255
   end
 
   create_table "parties", force: :cascade do |t|
