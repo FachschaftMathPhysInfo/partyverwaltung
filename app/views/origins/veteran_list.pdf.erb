@@ -4,12 +4,12 @@
 \renewcommand{\arraystretch}{1.2}
 
 \begin{center}
-  \begin{tabular}{L{12cm}|L{5cm}}
+  \begin{longtable}{L{12cm}|L{5cm}}
     \rowcolor{gray!50}
     Name & Shirt \\
     <% @vets.each do |v| %>  
       <%= v.name %> & <%= v.shirt.to_s+" ("+v.typ.to_s+")" %>\\
     <% end %>
-  \end{tabular}
+  \end{longtable}
 \end{center}
 

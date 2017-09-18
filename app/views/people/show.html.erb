@@ -59,7 +59,11 @@
         <div class="headi">Bereichsleiter</div>
         <% @bls.each do |b| %>
           <div class="blBox">
-            <%= link_to b.name, b, :style=>"display:block;" %>
+            <% if b.party_id == @party_active.id %>
+              <%= link_to b.name, b, :style=>"display:block;" %>
+            <% else %>
+              <div><%= b.name %></div>
+            <% end %>
             <div class="boxActions">
               <% if canUse("SectionManagersController","destroy") %>
                 <%= link_to fa_icon("trash"), [b,SectionManager.where("section_id = :ss AND person_id = :pp",{ss:b.id, pp:@person.id}).first,:from_person => true], :class=>"button expanded", :confirm => "Sure?", :method => :delete %>

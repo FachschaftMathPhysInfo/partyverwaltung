@@ -43,7 +43,7 @@ class PeopleController < ApplicationController
   def show
     @person = Person.find(params[:id])
     @notes = @person.notes.order('created_at DESC')
-    @bls = Section.joins(:section_managers).select("sections.*").order("name ASC")
+    @bls = Section.joins(:section_managers).select("sections.*").where("person_id=?",@person.id).order("name ASC")
     @shifts = Section.joins(:shifts).select("sections.id as id, sections.name, shifts.start, shifts.ende, shifts.id as shiftid").where("sections.party_id = ? AND shifts.person_id = ?",getActiveParty().id,params[:id]).order("start-interval '8 hours' ASC")
     
     @historyBL = findBlHist(@person.id)
