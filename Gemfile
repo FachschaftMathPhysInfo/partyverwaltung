@@ -51,7 +51,7 @@ gem "highcharts-rails"
 gem "font-awesome-rails"
 #shirts
 gem 'paperclip'
-gem "paperclip_database",:git => "git://github.com/pwnall/paperclip_database.git", :branch => "rails5"
+gem "paperclip_database",:git => "https://github.com/pwnall/paperclip_database.git", :branch => "rails5"
 #latex
 gem 'rails-latex'
 
