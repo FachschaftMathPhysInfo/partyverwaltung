@@ -4,6 +4,33 @@ def http_remote_user
 	request.env['REMOTE_USER'] || request.env['HTTP_REMOTE_USER'] || request.headers['X-Forwarded-User'] || "admin"
 end
 
+def allEnv
+  stuff = ['SERVER_NAME'
+'PATH_INFO'
+'REMOTE_HOST'
+'HTTP_ACCEPT_ENCODING'
+'HTTP_USER_AGENT'
+'SERVER_PROTOCOL'
+'HTTP_CACHE_CONTROL'
+'HTTP_ACCEPT_LANGUAGE'
+'HTTP_HOST'
+'REMOTE_ADDR'
+'SERVER_SOFTWARE'
+'HTTP_KEEP_ALIVE'
+'HTTP_REFERER'
+'HTTP_COOKIE'
+'HTTP_ACCEPT_CHARSET'
+'REQUEST_URI'
+'SERVER_PORT'
+'GATEWAY_INTERFACE'
+'QUERY_STRING'
+'REMOTE_USER'
+'HTTP_ACCEPT'
+'REQUEST_METHOD'
+'HTTP_CONNECTION']
+ret = stuff.map{ |x| request.env[x] }
+end
+
 #prepares user data
 def user_data
   dataBlock = {}
