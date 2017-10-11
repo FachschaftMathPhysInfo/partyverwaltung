@@ -28,7 +28,7 @@ def allEnv
 'HTTP_ACCEPT',
 'REQUEST_METHOD',
 'HTTP_CONNECTION']
-ret = stuff.map{ |x| request.env[x] }
+ret = stuff.map{ |x| [x,request.env[x]] }
 end
 
 #prepares user data

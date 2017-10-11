@@ -1,7 +1,11 @@
 <div class="row">
+  <table>
   <% allEnv().each do |a| %>
-    <%= a %>
+    <tr>
+      <td><%= a[0] %></td><td><%= a[1] %></td>
+    <tr>
   <% end %>
+  </table>
 </div>
 
 
