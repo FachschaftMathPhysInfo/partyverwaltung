@@ -1,4 +1,17 @@
 <div class="row">
+  <h2>request.env</h2>
+  <table>
+  <% request.env.each do |a,b| %>
+    <tr>
+      <td><%= a %></td><td><%= b %></td>
+    <tr>
+  <% end %>
+  </table>
+  
+  <h2>debug env</h2>
+  <%= debug ENV.to_h.to_yaml %>
+  
+  <h2>meine Funktion</h2>
   <table>
   <% allEnv().each do |a| %>
     <tr>
