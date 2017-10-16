@@ -1,36 +1,8 @@
 module ApplicationHelper
 
 def http_remote_user
-	request.env['REMOTE_USER'] || request.env['HTTP_REMOTE_USER'] || request.headers['X-Forwarded-User'] || "admin"
-end
-
-def allEnv
-  stuff = ['SERVER_NAME',
-'PATH_INFO',
-'REMOTE_HOST',
-'HTTP_ACCEPT_ENCODING',
-'HTTP_USER_AGENT',
-'SERVER_PROTOCOL',
-'HTTP_CACHE_CONTROL',
-'HTTP_ACCEPT_LANGUAGE',
-'HTTP_HOST',
-'REMOTE_ADDR',
-'SERVER_SOFTWARE',
-'HTTP_KEEP_ALIVE',
-'HTTP_REFERER',
-'HTTP_COOKIE',
-'HTTP_ACCEPT_CHARSET',
-'REQUEST_URI',
-'SERVER_PORT',
-'GATEWAY_INTERFACE',
-'QUERY_STRING',
-'REMOTE_USER',
-'HTTP_REMOTE_USER',
-'X-Forwarded-User',
-'HTTP_ACCEPT',
-'REQUEST_METHOD',
-'HTTP_CONNECTION']
-ret = stuff.map{ |x| [x,request.env[x]] }
+	# old request.env['REMOTE_USER'] || request.env['HTTP_REMOTE_USER'] || request.headers['X-Forwarded-User'] || "admin"
+  request.env['HTTP_X_FORWARDED_USER'] || "unknown"
 end
 
 #prepares user data
