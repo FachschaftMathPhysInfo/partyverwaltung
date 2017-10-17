@@ -2,7 +2,7 @@ module ApplicationHelper
 
 def http_remote_user
 	# old request.env['REMOTE_USER'] || request.env['HTTP_REMOTE_USER'] || request.headers['X-Forwarded-User'] || "admin"
-  request.env['HTTP_X_FORWARDED_USER'] || "unknown"
+  ( request.env['HTTP_X_FORWARDED_USER'].split("@")[0] if request.env['HTTP_X_FORWARDED_USER'] ) || "unknown"
 end
 
 #prepares user data

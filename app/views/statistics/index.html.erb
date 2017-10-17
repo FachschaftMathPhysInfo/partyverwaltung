@@ -1,4 +1,22 @@
 <div class="row">
-  <h1>Statistics#index</h1>
-  <%= link_to "shirts",statistics_shirts_path %>
+  <div class="small-12 medium-9 medium-offset-1 column">
+    <div class="row">
+          
+      <% if canUse("StatisticsController","shirts") %>      
+        <%= link_to statistics_shirts_path do %>
+          <div class="small-4 column linkEntry">
+            <%= image_tag "shirt_icon" %>
+            <p>
+              Shirts
+            </p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    
+  
+  </div>
+  <div class="show-for-medium medium-2 column">
+    &nbsp;
+  </div>
 </div>
