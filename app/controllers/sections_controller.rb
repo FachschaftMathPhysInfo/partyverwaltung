@@ -100,6 +100,10 @@ class SectionsController < ApplicationController
     end
   end
   
+  def massChange
+  
+  end
+  
   private
   def section_params
     params.require(:section).permit(:name, :text)

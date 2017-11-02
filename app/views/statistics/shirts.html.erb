@@ -12,7 +12,7 @@
           <tr>
             <td><%= check_box_tag :all %><%= label_tag :all, "Alle Parties" %></td>
           </tr>
-          <% Party.all.each do |p| %>
+          <% Party.all.order('jahr DESC, semester DESC').each do |p| %>
             <tr>
               <td><%= check_box_tag "data[#{p.id}]" %><%= label_tag "data[#{p.id}]", p.name %></td>
             </tr>

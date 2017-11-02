@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   post 'shifts/remove'
 #SECTIONS
   get 'shifts/:id/change_visibility', :to => 'sections#change_visibility', :as => :change_visibility
+  post 'sections/massChange'
 #STATISTICS
   get 'statistics/index'
   match 'statistics/shirts', :to => 'statistics#shirts', :via => [:get, :post]
