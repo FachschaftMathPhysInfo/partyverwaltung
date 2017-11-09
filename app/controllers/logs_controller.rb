@@ -1,6 +1,6 @@
 class LogsController < ApplicationController
   def index
-    @logs = Log.all.order("created_at DESC")
+    @logs = Log.all.order("created_at DESC").limit(100)
     if params.has_key?(:cFilter)
       @logs = @logs.select{ |x| x.controller == params[:cFilter] }
     end

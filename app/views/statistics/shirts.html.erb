@@ -23,11 +23,12 @@
     <% end %>
   </div>
   <div class="small-12 medium-9 column">
-    <%= @hi || "blubb" %>
     <% if request.post? %>
       <%= render partial: "shirtChart" %>
       <%= render partial: "shirtChart2" %>
       <%= render partial: "shirtChart3" %>
+    <% else %>
+      <%= @hi || "Datenbreite wählen" %>
     <% end %>
   </div>
 </div>

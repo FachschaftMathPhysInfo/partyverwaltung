@@ -1,0 +1,48 @@
+<div id="helperChart"></div>
+<script>
+Highcharts.chart('helperChart', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Wo wurde geholfen?'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}% ({point.y})</b>'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} % ({point.y})',
+                style: {
+                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                }
+            }
+        }
+    },
+    series: [{
+        name: 'Bereich',
+        colorByPoint: true,
+        data: [
+        <% @where.each do |w| %>
+          {
+            name: '<%= w.name %>',
+            y: <%= w.count %>
+          }, 
+        <% end %>
+        <% @bl.each do |w| %>
+          {
+            name: '<%= w.name %>(BL)',
+            y: <%= w.count %>
+          }, 
+        <% end %>
+        ]
+    }]
+});
+</script>

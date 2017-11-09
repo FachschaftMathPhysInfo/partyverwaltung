@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="small-12 medium-3 column">
+    <div>
+      <%= link_to statistics_index_path do %>
+        <%= fa_icon("chevron-left") %><%= fa_icon("chevron-left") %> Zurück
+      <% end %>
+    </div>
+    <%= form_tag statistics_helper_path do%>
+      <fieldset class="fieldset councSelect">
+        <legend>Person auswählen</legend>
+        <%= select_tag :h_id, options_from_collection_for_select(Person.all.order("vname,nname ASC"), :id, :name) %>
+      </fieldset>
+    <%= submit_tag "Generieren", :class=>"expanded button" %>
+    <% end %>
+  </div>
+  <div class="small-12 medium-9 column">
+    <% if request.post? %>
+      <h2><%= @h.name %></h2>
+      <% if @bl.length + @where.length > 0 %>
+        <%= render partial: "helperChart" %>
+      <% end %>
+    <% else %>
+      <%= @hi || "Person wählen" %>
+    <% end %>
+  </div>
+</div>

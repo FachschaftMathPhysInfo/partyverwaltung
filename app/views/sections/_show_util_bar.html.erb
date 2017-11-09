@@ -33,8 +33,19 @@
   </button>
 </div>
 
-<div class="reveal" id="massShiftModal" data-reveal>
-  <%= render :template => 'sections/massChange' %>
+<div class="reveal large" id="massShiftModal" data-reveal>
+  <div class="row">
+    <div class="small-12 column">
+      Schichten zuordnen zu:
+      <%= form_tag massChange_path do %>
+      
+        <%= select_tag :council_id, options_from_collection_for_select(Council.all, :id, :name) %>
+        
+        <%= submit_tag "Wechseln", :class=>"expanded button" %>
+      <% end %>
+  </div>
+</div>
+
 
   <button class="close-button" data-close aria-label="Close modal" type="button">
     <span aria-hidden="true">&times;</span>

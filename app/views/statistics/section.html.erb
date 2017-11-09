@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="small-12 medium-3 column">
+    <div>
+      <%= link_to statistics_index_path do %>
+        <%= fa_icon("chevron-left") %><%= fa_icon("chevron-left") %> Zurück
+      <% end %>
+    </div>
+    <%= form_tag statistics_section_path do%>
+      <fieldset class="fieldset councSelect">
+        <legend>Bereich auswählen</legend>
+        <%= select_tag :b_name, options_from_collection_for_select(Section.select("DISTINCT name").order("name ASC"), :name, :name) %>
+      </fieldset>
+    <%= submit_tag "Generieren", :class=>"expanded button" %>
+    <% end %>
+  </div>
+  <div class="small-12 medium-9 column">
+    <% if request.post? %>
+      <h2><%= @name %></h2>
+      <%= render partial: "sectionChart" %>
+    <% else %>
+      <%= @hi || "Bereich wählen" %>
+    <% end %>
+  </div>
+</div>

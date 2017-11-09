@@ -24,6 +24,7 @@
           <%= render partial: "shift_sorter", collection: @oriData[s.name], as: :shiftGroup, locals:{:section => s.id}%>
         </div>
       <% end %>
+      <br>
       <%= submit_tag "Zuordnen", :class=>"expanded button", :id=>"sortSubmit" %>
     <% end %>
   </div>

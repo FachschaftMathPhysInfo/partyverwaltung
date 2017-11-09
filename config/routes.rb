@@ -40,11 +40,13 @@ Rails.application.routes.draw do
   post 'shifts/remove'
 #SECTIONS
   get 'shifts/:id/change_visibility', :to => 'sections#change_visibility', :as => :change_visibility
-  post 'sections/massChange'
+  post 'sections/:id/massChange', :to => 'sections#massChange', :as => :massChange
+  post 'sections/:id/doMassChange', :to => 'sections#doMassChange', :as => :doMassChange
 #STATISTICS
   get 'statistics/index'
   match 'statistics/shirts', :to => 'statistics#shirts', :via => [:get, :post]
-  
+  match 'statistics/helper', :to => 'statistics#helper', :via => [:get, :post]
+  match 'statistics/section', :to => 'statistics#section', :via => [:get, :post]
 #RESOURCES
   resources :people do
     resources :notes

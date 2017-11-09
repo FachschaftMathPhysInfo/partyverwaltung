@@ -4,14 +4,37 @@
           
       <% if canUse("StatisticsController","shirts") %>      
         <%= link_to statistics_shirts_path do %>
-          <div class="small-4 column linkEntry">
-            <%= image_tag "shirt_icon" %>
+          <div class="small-3 column linkEntry">
+            <%= image_tag("shirt_icon", alt: "shirt", height: 90, width: 90) %>
             <p>
               Shirts
             </p>
           </div>
         <% end %>
       <% end %>
+      
+      <% if canUse("StatisticsController","helper") %>      
+        <%= link_to statistics_helper_path do %>
+          <div class="small-3 column linkEntry">
+            <%= fa_icon "user-circle 5x" %>
+            <p>
+              Helfer
+            </p>
+          </div>
+        <% end %>
+      <% end %>
+      
+      <% if canUse("StatisticsController","section") %>      
+        <%= link_to statistics_section_path do %>
+          <div class="small-3 column linkEntry">
+            <%= fa_icon "users 5x" %>
+            <p>
+              Section
+            </p>
+          </div>
+        <% end %>
+      <% end %>
+      
     </div>
     
   

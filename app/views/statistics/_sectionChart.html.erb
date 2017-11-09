@@ -1,0 +1,54 @@
+<div id="sectionChart"></div>
+<script>
+Highcharts.chart('sectionChart', {
+    title: {
+        text: 'Schichten nach Fest'
+    },
+    xAxis: {
+        categories: [
+          <% @p.each do |p| %>
+            '<%= p.name %>',
+          <% end %>
+        ],
+        crosshair: true
+    },
+    yAxis: {
+        title: {
+            text: 'Anzahl'
+        }
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle'
+    },
+    series: [
+      {
+        name: '<%= @name %>',
+        data: [
+          <% @p.each do |p| %>
+            <% s = @secs.select{|o| o.pid == p.id}.first %>
+            <% ss = @shifts.select{|o| o.section_id == s.id} %>
+            <%= ss.size() %>,
+          <% end %>
+        ]
+      }
+    ],
+
+    responsive: {
+        rules: [{
+            condition: {
+                maxWidth: 500
+            },
+            chartOptions: {
+                legend: {
+                    layout: 'horizontal',
+                    align: 'center',
+                    verticalAlign: 'bottom'
+                }
+            }
+        }]
+    }
+
+});
+</script>

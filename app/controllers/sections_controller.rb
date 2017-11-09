@@ -101,7 +101,23 @@ class SectionsController < ApplicationController
   end
   
   def massChange
+    @section=Section.find(params[:id])
+    @shifts = @section.shifts.where("council_id != ?", params[:council_id]).order("start-interval '8 hours' ASC")
+    @c = Council.find(params[:council_id])
+  end
   
+  def doMassChange
+    @section=Section.find(params[:id])
+    
+    if params.has_key?(:data)
+      params[:data].each do |k,v|
+        Shift.find(k).update(:council_id => params[:c])
+      end
+    end
+    
+    respond_to do |format|
+      format.html { redirect_to (@section)}
+    end
   end
   
   private

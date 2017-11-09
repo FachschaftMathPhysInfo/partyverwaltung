@@ -1,11 +1,29 @@
 <div class="row">
-  <div class="small-12 column">
-    Schichten anderer Fachschaft zuordnen lol
-    <%= form_tag sections_massChange_path do %>
-    
-      <%= select_tag :council_id, options_from_collection_for_select(Council.all, :id, :name) %>
+  <%= form_tag doMassChange_path do %>
+   
+    <% @shifts.each do |sh| %>
+      <div class="small-12 medium-4 column">
+        <%= check_box_tag "data[#{sh.id}]" %>
       
+        <% if sh.council_id %> <% ccc = Council.find(sh.council_id) %> <% end %>
+        
+        <span <% if ccc %> style="color:#<%= ccc.color %>" <% end %>>
+          <%= sh.start.to_s(:time) %> -- <%= sh.ende.to_s(:time) %> <% if ccc %> ( <%= ccc.shortcut %> ) <% end %>
+        </span>
+        
+        <% if sh.person_id %>
+          <%= Person.find(sh.person_id).name %>
+        <% else %> 
+          leer
+        <% end %>
+      </div>
+    <% end %>
+    
+    <%= hidden_field_tag :c, @c.id %>
+    
+    <% if canUse("SectionsController","doMassChange") %>
       <%= submit_tag "Wechseln", :class=>"expanded button" %>
     <% end %>
-  </div>
+    
+  <% end %>
 </div>
