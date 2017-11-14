@@ -1,6 +1,6 @@
 class BugsController < ApplicationController
   def index
-    @bugs = Bug.all
+    @bugs = Bug.all.order("value, updated_at DESC")
   end
   
   def create
