@@ -37,5 +37,7 @@
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
 \begin{document}
+
 <%= yield %>
+
 \end{document}

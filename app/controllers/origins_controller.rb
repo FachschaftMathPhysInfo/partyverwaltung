@@ -211,7 +211,6 @@ class OriginsController < ApplicationController
     @chunks = @bons / 200
     
     @text = params[:text].to_s.gsub("\r\n","\\newline ")
-    puts @text
     
     @orient = "landscape"
     

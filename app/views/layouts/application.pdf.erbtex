@@ -23,5 +23,7 @@
 \end{minipage}
 
 \rule{\textwidth}{1mm}
+
 <%= yield %>
+
 \end{document}
