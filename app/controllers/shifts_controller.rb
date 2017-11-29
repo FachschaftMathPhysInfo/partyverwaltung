@@ -53,7 +53,7 @@ class ShiftsController < ApplicationController
   
   def sortToCouncil
     if request.post?
-      puts "STSRT"
+      puts "START"
       @sections = Section.where("sections.party_id = ?",getActiveParty().id)
       data = {}
       @sections.each do |s|
