@@ -49,24 +49,30 @@ class OriginsController < ApplicationController
     @data = {}
     
     sections.each do |s|
-      shifts = Shift.where("section_id = ? AND council_id = ?", s.id, council.id).order("start-interval '8 hours' ASC")#.order('start DESC, person_id')
-      unless shifts.empty?
+      #shifts = Shift.where("section_id = ? AND council_id = ?", s.id, council.id).order("start-interval '8 hours' ASC")#.order('start DESC, person_id')
+      shifttimes = Shift.select("start,ende").where("section_id = ? AND council_id = ?", s.id, council.id).order("start-interval '8 hours' ASC").group("start,ende")
+      unless shifttimes.empty?
         @data[s.name] = []
-        shifts.each do |ss|
-          input = [ ss.start.to_s(:time), ss.ende.to_s(:time) ]
-          if ss.person_id
-            perso = Person.find(ss.person_id)
-            input << perso.vname
-            input << perso.nname
-            input << perso.shirt
-            input << perso.typ
-          else
-            input << ""
-            input << ""
-            input << ""
-            input << ""
+        shifttimes.each do |t|
+          shifts = Shift.where("section_id = ? AND council_id = ? AND start = ? AND ende = ?", s.id, council.id, t.start, t.ende).order("person_id ASC NULLS LAST")
+          shifts.each do |ss|
+            input = [ ss.start.to_s(:time), ss.ende.to_s(:time) ]
+            if true
+            if ss.person_id
+              perso = Person.find(ss.person_id)
+              input << perso.vname
+              input << perso.nname
+              input << perso.shirt
+              input << "(" + perso.typ.to_s[0] + ")"
+            else
+              input << ""
+              input << ""
+              input << ""
+              input << ""
+            end
+            end
+            @data[s.name] << input
           end
-          @data[s.name] << input
         end
       end
     end
