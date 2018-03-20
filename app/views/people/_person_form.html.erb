@@ -14,11 +14,11 @@
       </tr>
       <tr>                    
           <td> Shirtgröße </td>
-          <td> <%= f.select :shirt, options_for_select([['XS'],['S'],['M'],['L'],['XL'],['XXL']]) %> </td>
+          <td> <%= f.select :shirt, options_for_select([['XS'],['S'],['M'],['L'],['XL'],['XXL']],person.shirt) %> </td>
       </tr>
       <tr>
           <td> Shirttyp </td>
-          <td> <%= f.select :typ, options_for_select([['Unisex'],['Male fit'],['Girly fit']])%> </td>
+          <td> <%= f.select :typ, options_for_select([['Unisex'],['Male fit'],['Girly fit']],person.typ) %> </td>
       </tr>
   </table>
   <%= f.submit buttonText, :class => "expanded button"%>

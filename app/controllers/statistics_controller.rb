@@ -20,7 +20,11 @@ class StatisticsController < ApplicationController
         @parties = Party.all.order('jahr ASC, semester ASC')
       elsif params.has_key?(:five)
         @l = Party.all.length()
-        @parties = Party.all.order('jahr ASC, semester ASC').limit(5).offset(@l - 5)
+        if @l >= 6
+          @parties = Party.all.order('jahr ASC, semester ASC').limit(5).offset(@l - 6)
+        else
+          @parties = Party.all.order('jahr ASC, semester ASC').limit(@l-1)
+        end
       else
         ids = params[:data].keys.map{|x| x.to_i }
         @parties = Party.where("id IN (?)",ids).order('jahr ASC, semester ASC')
