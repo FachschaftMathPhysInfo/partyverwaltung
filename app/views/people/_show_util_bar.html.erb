@@ -14,7 +14,10 @@
   </button>
 <% end %>
 <% if canUse("PeopleController","destroy") %>
-  <%= link_to fa_icon("trash 3x"), @person, :class=>"button expanded", :confirm => "Sure?", :method => :delete %>
+  <%= link_to fa_icon("trash 3x"), reallyDestroy_path, :class=>"button expanded" %>
+  <% if false %>
+    <%= link_to fa_icon("trash 3x"), @person, :class=>"button expanded", :confirm => "Sure?", :method => :delete %>
+  <% end %>
 <% end %>
 <% if canUse("SectionManagersController","create") and @person.status.first.value != -1 %>
   <button class="button expanded" data-open="blModal">

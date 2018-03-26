@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'rights/change'
 #PERSON
   post 'people/:id/change_status', :to => 'people#change_status', :as => :change_status
+  get 'people/:id/reallyDestroy', :to => 'people#reallyDestroy', :as => :reallyDestroy
 #BUG
   get 'bugs/change'
 #LOGS

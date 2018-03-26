@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="small-12 medium-8 medium-offset-2 end column">
+    <div style="color:red;font-size:2em;font-weight:bold;text-align:center">
+      Möchtest du diese Person wirklich löschen und damit all seine Taten hier für immer vernichten?
+      <!--<%= params[:con] %>, <%= params[:met] %>-->
+    </div>
+    <%= image_tag "puppy.jpg" %>
+    
+    <%= link_to fa_icon("trash 2x")+"  Ja  "+fa_icon("trash 2x"), @person, :class=>"button expanded", :confirm => "Sure?", :method => :delete %>
+  </div>
+</div>

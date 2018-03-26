@@ -70,6 +70,10 @@ class PeopleController < ApplicationController
     redirect_to person
   end
   
+  def reallyDestroy
+    @person = Person.find(params[:id])
+  end
+  
   def destroy
     @person = Person.find(params[:id])
     @person.destroy
