@@ -1,6 +1,6 @@
 class Mailer < ActionMailer::Base
 
-    default :from => request.env["PRODUCTION_EMAIL_ADDRESS"] || "akfest@mathphys.stura.uni-heidelberg.de"
+    default :from => ENV["PRODUCTION_EMAIL_ADDRESS"] || "akfest@mathphys.stura.uni-heidelberg.de"
 
     def insert_mail(user,shift)
         @user=user
