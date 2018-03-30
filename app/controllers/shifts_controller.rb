@@ -29,6 +29,11 @@ class ShiftsController < ApplicationController
   def insert
     @shift = Shift.find(params[:id])
     @shift.update(:person_id => params[:person_id])
+    
+    @person = Person.find(params[:person_id])
+    
+    Mailer.insert_mail(@person,@shift).deliver
+    
     respond_to do |format|
       flash[:success] = 'Schicht was successfully updated.'
       if params[:from_person]
