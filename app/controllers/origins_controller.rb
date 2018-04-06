@@ -57,7 +57,6 @@ class OriginsController < ApplicationController
           shifts = Shift.where("section_id = ? AND council_id = ? AND start = ? AND ende = ?", s.id, council.id, t.start, t.ende).order("person_id ASC NULLS LAST")
           shifts.each do |ss|
             input = [ ss.start.to_s(:time), ss.ende.to_s(:time) ]
-            if true
             if ss.person_id
               perso = Person.find(ss.person_id)
               input << perso.vname
@@ -69,7 +68,6 @@ class OriginsController < ApplicationController
               input << ""
               input << ""
               input << ""
-            end
             end
             @data[s.name] << input
           end
@@ -88,7 +86,7 @@ class OriginsController < ApplicationController
   def list_needy
     council = Council.where("name = ?", params[:counc]).first
     
-    sections=Section.where("party_id = ? AND visible=true", getActiveParty().id).order('name')
+    sections = Section.where("party_id = ? AND visible=true", getActiveParty().id).order('name')
     
     @data = {}
     
@@ -105,7 +103,6 @@ class OriginsController < ApplicationController
             shifts = Shift.where("section_id = ? AND council_id = ? AND start = ? AND ende = ?", s.id, council.id, t.start, t.ende).order("person_id ASC NULLS LAST")
             shifts.each do |ss|
               input = [ ss.start.to_s(:time), ss.ende.to_s(:time) ]
-              if true
               if ss.person_id
                 perso = Person.find(ss.person_id)
                 input << perso.vname
@@ -118,7 +115,7 @@ class OriginsController < ApplicationController
                 input << ""
                 input << ""
               end
-              end
+
               @data[s.name] << input
             end
           end
