@@ -124,6 +124,7 @@ class OriginsController < ApplicationController
           end
         end
       end
+    end
     
     @orient = "landscape"
 
