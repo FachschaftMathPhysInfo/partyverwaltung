@@ -1,6 +1,5 @@
 <% for i in 0..(@chunks-1) %>
   <% for j in 1..25 %>
-    \vspace*{2mm}
     <% for k in 0..7 %>
       \bon{<%= sprintf '%04d', i*200 + j + k * 25 %>}{<%= @text %>}
       <% unless k==7 %>
