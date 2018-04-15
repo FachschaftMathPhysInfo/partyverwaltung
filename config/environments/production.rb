@@ -65,7 +65,10 @@ Rails.application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.smtp_settings = {:address => ENV["SMTP_ADDRESS"], :openssl_verify_mode => OpenSSL::SSL::VERIFY_PEER, :port => ENV["SMTP_PORT"]}
+  config.action_mailer.smtp_settings = {:address => ENV["SMTP_ADDRESS"],
+    :openssl_verify_mode => OpenSSL::SSL::VERIFY_PEER,
+    :port => ENV["SMTP_PORT"]}
+  #TYNSH = add to options:  ca_file: "/etc/ssl/certs/....right path",
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
