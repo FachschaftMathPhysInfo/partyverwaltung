@@ -1,0 +1,21 @@
+<%= form_for mail do |f| %>
+  <table>
+      <tr>
+          <td> Name </td>
+          <td> <%= f.text_field :name %> </td>
+      </tr>
+      <tr>
+          <td> Betreff </td>
+          <td> <%= f.text_field :subject %> </td>
+      </tr> 
+      <tr>                    
+          <td> Inhalt </td>
+          <td> <%= f.text_area :content, :size =>'10x15' %> </td>
+      </tr>
+      <tr>                    
+          <td> An wen senden? </td>
+          <td> <%= f.select :sendcode, options_for_select({'eine Person' => 'U', 'alle der aktuellen Party' => 'CP'}, mail.sendcode) %> </td>
+      </tr>
+  </table>
+  <%= f.submit buttonText, :class => "expanded button"%>
+<% end %>

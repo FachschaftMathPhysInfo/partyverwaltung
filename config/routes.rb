@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
 #EMAILS
-  get 'emails/reminder'
 #JUDGE
   get 'judges/index'
   get 'judges/init'

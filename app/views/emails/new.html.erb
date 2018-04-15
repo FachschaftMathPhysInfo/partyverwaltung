@@ -1,0 +1,6 @@
+<div class="row">
+  <div class="small-12 column">
+    <% mail = Email.new %>
+    <%= render partial: "mail_form", locals: {mail: mail, buttonText: "Erstellen"} %>
+  </div>
+</div>

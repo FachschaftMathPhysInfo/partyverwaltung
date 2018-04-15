@@ -1,12 +1,15 @@
 <div class="row">
-  <div class="small-12 medium-10 medium-offset-2 column">
+  <div class="small-12 medium-3 column">
+    <%= render "util_bar" %>
+  </div>
+  <div class="small-12 medium-10 column">
     <div class="row">  
-      <% if canUse("EmailsController","reminder") %>      
-        <%= link_to emails_reminder_path do %>
+      <% @mails.each do |m| %>
+        <%= link_to m do %>
           <div class="small-12 column">
             <%= fa_icon "envelope 5x" %>
             <p>
-              Reminder Mail
+              <%= m.name %>
             </p>
           </div>
         <% end %>

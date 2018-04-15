@@ -1,0 +1,14 @@
+<div class="utiltop">
+  Utils
+</div>
+<% if canUse("EmailsController","create") %>
+  <button class="button expanded" data-open="newMailModal"><%= fa_icon "plus 3x" %></button>
+<% end %>
+
+<div class="reveal" id="newMailModal" data-reveal>
+  <%= render :template => 'emails/new' %>
+
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
