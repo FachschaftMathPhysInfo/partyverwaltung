@@ -4,7 +4,17 @@ class EmailsController < ApplicationController
   end
   
   def create
-  
+   @mail = Email.new(email_params)
+
+    respond_to do |format|
+      if @mail.save
+        flash[:success] = 'Mail was successfully created.'
+        format.html { redirect_to(@mail) }
+      else
+        flash[:alert] = 'Could not create mail' 
+        format.html { redirect_to(email_path)}
+      end
+    end  
   end
   
   def update
