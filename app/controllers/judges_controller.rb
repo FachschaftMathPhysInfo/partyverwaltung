@@ -31,6 +31,7 @@ class JudgesController < ApplicationController
         end
       end
     end
+    redirect_to judges_index_path
   end
   
   def change

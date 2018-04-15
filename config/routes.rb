@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+#EMAILS
+  get 'emails/reminder'
 #JUDGE
   get 'judges/index'
   get 'judges/init'
@@ -59,6 +61,7 @@ Rails.application.routes.draw do
   resources :councils
   resources :shirts
   resources :bugs
+  resources :emails
   
   resources :sections do
     resources :shifts
