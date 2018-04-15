@@ -68,7 +68,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {:address => ENV["SMTP_ADDRESS"],
     :openssl_verify_mode => OpenSSL::SSL::VERIFY_PEER,
     :port => ENV["SMTP_PORT"]}
-  #TYNSH = add to options:  ca_file: "/etc/ssl/certs/....right path",
+    :ca_file => "/etc/ssl/certs/ISRG_Root_X1.pem",
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
