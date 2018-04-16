@@ -16,6 +16,26 @@ class OriginsController < ApplicationController
   
   end
   
+  def reminder
+    @party = getActiveParty()
+    secs = Section.where("party_id = ?",@party.id).order('name ASC')
+    secs.each do |s|
+      shifts = Shift.where("section_id = ? AND person_id IS NOT NULL",s.id)
+      shifts.each do |ss|
+        pers = Person.where("id = ?",ss.person_id)
+        if pers.size > 0
+          pers = pers.first
+          puts(pers.name())
+          Mailer.reminder_mail(pers,ss).deliver
+        end
+      end
+    end    
+   
+   respond_to do |format|
+      format.html {redirect_to (administration_path)}
+    end  
+  end
+  
   def list_empty
     council = Council.where("name = ?", params[:counc]).first
     

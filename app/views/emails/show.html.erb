@@ -1,6 +1,9 @@
 <div class="row">
   <div class="small-12 medium-2 column">
     <%= link_to "zurück", emails_path %>
+    <% if canUse("EmailsController","update") %>
+      <button class="button expanded" data-open="editMailModal"><%= fa_icon "pencil 2x" %></button>
+    <% end %>
   </div>
   <div class="small-12 medium-10 column">
     <h2><%= @mail.name %></h2>
@@ -14,5 +17,16 @@
         <td><%= @mail.content %></td>
       </tr>
     </table>
+    Für diese Mail wurde als Sendeoption: senden an __ <%= @mail.codeToExpl(@mail.sendcode) %> __ angegeben.
+    <%= render partial: @mail.sendcode, locals: {mail: @mail} %>
   </div>
+</div>
+
+
+<div class="reveal" id="editMailModal" data-reveal>
+  <%= render :template => 'emails/edit' %>
+
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
 </div>

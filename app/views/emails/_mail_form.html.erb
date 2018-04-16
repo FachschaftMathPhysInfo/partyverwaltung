@@ -14,7 +14,7 @@
       </tr>
       <tr>                    
           <td> An wen senden? </td>
-          <td> <%= f.select :sendcode, options_for_select({'eine Person' => 'U', 'einen Bereich' => 'S', 'alle der aktuellen Party' => 'CP'}, mail.sendcode) %> </td>
+          <td> <%= f.select :sendcode, options_for_select(mail.codes, mail.sendcode) %> </td>
       </tr>
   </table>
   <%= f.submit buttonText, :class => "expanded button"%>

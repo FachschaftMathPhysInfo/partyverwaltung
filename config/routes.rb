@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 #EMAILS
+  post 'emails/:id/send_all', :to => 'emails#send_all', :as => :send_all
 #JUDGE
   get 'judges/index'
   get 'judges/init'
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
   post 'logs/index'
 #ORIGIN
   root 'origins#index'
+  get 'origins/reminder'
   get 'origins/administration', :as => :administration
   get 'origins/bad_boy', :as => :bad_boy
   get 'origins/lists'

@@ -67,13 +67,26 @@
           </div>
         <% end %>
       <% end %>
-      
+      <!--
       <% if canUse("EmailsController","index") %>      
         <%= link_to emails_path do %>
           <div class="small-4 column linkEntry">
             <%= fa_icon "envelope 5x" %>
             <p>
               Mail
+            </p>
+          </div>
+        <% end %>
+      <% end %>
+      -->
+      <% if canUse("OriginsController","reminder") %>      
+        <%= link_to origins_reminder_path do %>
+          <div class="small-4 column linkEntry">
+            <%= fa_icon "envelope 5x" %>
+            <p>
+              <span style="color:red">ACHTUNG!!!!</span>
+              Reminder Mail<br>
+              <span style="color:red">DAS VERSENDET GLEICH!!!!</span>
             </p>
           </div>
         <% end %>

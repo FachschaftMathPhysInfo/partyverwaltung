@@ -1,0 +1,18 @@
+Hallo <%= @user.vname %>,
+
+Du hast dich für folgende Schicht am MathPhysTheo eingetragen:
+<%= @bereich.name %> von <%= @shift.start.to_s(:time) %> bis <%= @shift.ende.to_s(:time) %> 
+
+Mit dieser Mail wollten wir dir ein paar Infos mitteilen: 
+Wir würden dich bitten, am MathPhysTheo schon um 20:45 Uhr in der Mensa zu sein (Aufbau- und Küchenhelfer natürlich schon früher), auch wenn deine Schicht erst später beginnt. Da bekommst du dann dein T-Shirt und Getränkebons sowie eine Einweisung zu deiner Schicht. Sollte dir doch noch etwas dazwischen kommen, schreib uns doch ein Mail. 
+
+Und jetzt gibt's vorab schon mal ein paar Infos von deinem Bereichsleiter:
+
+<% if @text %>
+	<%= @text %>
+<% else %>
+	Dein Bereichsleiter hat dir keinen Text hinterlassen.
+<% end %>
+
+Liebe Grüße,
+Dein MathPhysTheo-Team
