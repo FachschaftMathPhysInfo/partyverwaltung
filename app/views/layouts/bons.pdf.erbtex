@@ -22,7 +22,7 @@
     \node[anchor=west] at (.1,-1) {\bfseries\fontsize{40}{48}\selectfont #1};
     \node[anchor=west] at (3.5,-1) {\begin{minipage}{2.5cm}\small #2\end{minipage}};
 
-    \draw[fill={rgb:black,1;white,4}, line width=1mm] (6.95,0) rectangle ++(2.6,-1.9);
+    \draw[line width=1mm] (6.95,0) rectangle ++(2.6,-1.9);
           \node[anchor=west] at (7.1,-1) {\begin{minipage}{2.2cm}\bfseries\scriptsize Gutschein für\\1 Bier oder\\Alkoholfreies.\\Kein Cocktail!\end{minipage}};
     
     \draw[line width=1mm] (10,0) rectangle ++(17.3,-1.9);
