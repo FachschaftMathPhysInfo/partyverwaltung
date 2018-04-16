@@ -67,10 +67,7 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {:address => ENV["SMTP_ADDRESS"],
-    :enable_starttls_auto => true,
-    :openssl_verify_mode => OpenSSL::SSL::VERIFY_PEER,
-    :port => ENV["SMTP_PORT"],
-    :ca_file => "/etc/ssl/certs/ISRG_Root_X1.pem"}
+    :port => ENV["SMTP_PORT"]}
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
