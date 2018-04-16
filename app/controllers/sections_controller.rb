@@ -56,7 +56,7 @@ class SectionsController < ApplicationController
     @section=Section.find(params[:id])
     
     #SCHICHTEN
-    @shifts = @section.shifts.order("start-interval '8 hours' ASC")#.joins(:council)
+    @shifts = @section.shifts.order("start-interval '8 hours' ASC, council_id ASC")#.joins(:council)
     #@shifts=Shift.joins(:council).select("shifts.*, councils.color as color").order("start-interval '8 hours' ASC,council_id,id").where("shifts.section_id=#{@section.id}")
     #BEREICHSLEITER
     bls = @section.section_managers
