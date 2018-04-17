@@ -34,7 +34,7 @@
             </div>
             <div class="small-2 column">
               <% if canUse("RightsController","destroy") %>
-                <%= link_to fa_icon("trash 2x"), a, :confirm => "Sure?", :method => :delete %>
+                <%= link_to fa_icon("trash 2x"), a, :data => {:confirm => "Sure?"}, :method => :delete %>
               <% else %>
                 &nbsp;
               <% end %>

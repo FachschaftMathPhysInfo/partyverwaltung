@@ -11,7 +11,7 @@
   </button>
 <% end %>
 <% if canUse("SectionsController","destroy") %>
-  <%= link_to fa_icon("trash 3x"), @section, :class=>"button expanded", :confirm => "Sure?", :method => :delete %>
+  <%= link_to fa_icon("trash 3x"), @section, :class=>"button expanded", :data => {:confirm => "Sure?"}, :method => :delete %>
 <% end %>
 <% if canUse("SectionsController","massChange") %>
   <button class="button expanded" data-open="massShiftModal"><%= fa_icon "random 3x" %></button>

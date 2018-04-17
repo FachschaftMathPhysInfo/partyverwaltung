@@ -6,6 +6,6 @@
     </div>
     <%= image_tag "puppy.jpg" %>
     
-    <%= link_to fa_icon("trash 2x")+"  Ja  "+fa_icon("trash 2x"), @person, :class=>"button expanded", :confirm => "Sure?", :method => :delete %>
+    <%= link_to fa_icon("trash 2x")+"  Ja  "+fa_icon("trash 2x"), @person, :class=>"button expanded", :data => {:confirm => "Sure?"}, :method => :delete %>
   </div>
 </div>

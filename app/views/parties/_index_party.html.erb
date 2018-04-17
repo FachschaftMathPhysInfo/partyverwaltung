@@ -9,7 +9,7 @@
   </div>
   <div class="small-1 column">
     <% if canUse("PartiesController","destroy") %>
-      <%= link_to fa_icon("trash"), party, :class=>"button", :confirm => "Sure?", :method => :delete %>
+      <%= link_to fa_icon("trash"), party, :class=>"button", :data => {:confirm => "Sure?"}, :method => :delete %>
     <% end %>
   </div>
 </div>

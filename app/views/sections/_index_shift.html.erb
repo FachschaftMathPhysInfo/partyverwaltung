@@ -36,7 +36,7 @@
       <% end %>
       
       <% if canUse("ShiftsController","destroy") %>
-        <%= link_to fa_icon("trash 2x"), [@section,shift], :confirm => "Sure?", :method => :delete, :title => "Löschen" %>
+        <%= link_to fa_icon("trash 2x"), [@section,shift], :data => {:confirm => "Sure?"}, :method => :delete, :title => "Löschen" %>
       <% end %>
       
     </div>

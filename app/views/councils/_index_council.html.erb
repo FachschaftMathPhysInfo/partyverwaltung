@@ -10,7 +10,7 @@
           <%= link_to fa_icon("pencil"), edit_council_path(council) %>
         <% end %>
         <% if canUse("CouncilsController","destroy") %>
-          <%= link_to fa_icon("trash"), council, :confirm => "Sure?", :method => :delete %>
+          <%= link_to fa_icon("trash"), council, :data => {:confirm => "Sure?"}, :method => :delete %>
         <% end %>
       </span>
     </div>

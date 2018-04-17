@@ -62,7 +62,7 @@
             <%= link_to b.name, b, :style=>"display:block;" %>
             <div class="boxActions">
               <% if canUse("SectionManagersController","destroy") %>
-                <%= link_to fa_icon("trash"), [b,SectionManager.where("section_id = :ss AND person_id = :pp",{ss:b.id, pp:@person.id}).first,:from_person => true], :class=>"button expanded", :confirm => "Sure?", :method => :delete %>
+                <%= link_to fa_icon("trash"), [b,SectionManager.where("section_id = :ss AND person_id = :pp",{ss:b.id, pp:@person.id}).first,:from_person => true], :class=>"button expanded", :data => {:confirm => "Sure?"}, :method => :delete %>
               <% end %>
             </div>
           </div>

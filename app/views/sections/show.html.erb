@@ -61,7 +61,7 @@
                 <%= link_to b[2].name, b[2], :style=>"display:block;" %>
                 <div class="boxActions">
                   <% if canUse("SectionManagersController","destroy") %>
-                    <%= link_to fa_icon("trash"), [b[1],b[0]], :class=>"button expanded", :confirm => "Sure?", :method => :delete %>
+                    <%= link_to fa_icon("trash"), [b[1],b[0]], :class=>"button expanded", :data => {:confirm => "Sure?"}, :method => :delete %>
                   <% end %>
                 </div>
               </div>

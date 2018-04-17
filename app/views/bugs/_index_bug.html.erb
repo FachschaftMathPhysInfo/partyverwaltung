@@ -12,7 +12,7 @@
       <%= link_to bugs_change_path(:b => bug.id) do %> <span style="color:<%= mColor %>;"><%= fa_icon "podcast 2x" %></span> <% end %>
     <% end %>
     <% if canUse("BugsController","destroy") %>
-      <%= link_to fa_icon("trash 2x"), bug, :class=>"button", :confirm => "Sure?", :method => :delete %>
+      <%= link_to fa_icon("trash 2x"), bug, :class=>"button", :data => {:confirm => "Sure?"}, :method => :delete %>
     <% end %>
   </div>
 </div>

@@ -21,7 +21,7 @@
       <% end %>
       <br>
       <% if canUse("NotesController","destroy") %>
-        <%= link_to fa_icon("trash"), person_note_path(@person,note), :confirm => "Sure?", :method => :delete %>
+        <%= link_to fa_icon("trash"), person_note_path(@person,note), :data => {:confirm => "Sure?"}, :method => :delete %>
       <% end %>
     </div>
   </div>
