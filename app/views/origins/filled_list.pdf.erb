@@ -14,7 +14,7 @@
       \rowcolor{gray!50}
       Start & Ende & Vorname & Nachname & E-Mail & Shirt- Größe & {\small schon geholfen}\\
       <% s.each do |ss| %>
-        <%= ss[0] %> & <%= ss[1] %> & <%= ss[2] %> & <%= ss[3] %>& <% if ss[2] != "" %>XXXXXXXXXX<% end %> & <%= ss[4] %><%= ss[5] %> & \\
+        <%= ss[0] %> & <%= ss[1] %> & <%= ss[2] %> & <%= ss[3] %>& <% if ss[2] != "" %>\url{<%= ss[4] %>}<% end %> & <%= ss[5] %><%= ss[6] %> & \\
       <% end %>
     \end{longtable}
   \end{center}

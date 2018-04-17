@@ -81,9 +81,15 @@ class OriginsController < ApplicationController
               perso = Person.find(ss.person_id)
               input << perso.vname
               input << perso.nname
+              if params[:mails]
+                input << perso.mail
+              else
+                input << "XXXXXXXXXX"
+              end
               input << perso.shirt
               input << "(" + perso.typ.to_s[0] + ")"
             else
+              input << ""
               input << ""
               input << ""
               input << ""
@@ -96,7 +102,7 @@ class OriginsController < ApplicationController
     end
     
     @orient = "landscape"
-
+    
     respond_to do |format|
       format.pdf {render 'filled_list'}
       format.html {redirect_to (origins_lists_path)}

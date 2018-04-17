@@ -2,6 +2,7 @@
 \usepackage{longtable}
 \usepackage{geometry}
 \usepackage{array}
+\usepackage{url}
 
 \usepackage[table]{xcolor}
 
