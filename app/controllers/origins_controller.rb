@@ -188,11 +188,13 @@ class OriginsController < ApplicationController
     @data = {}
     
     sections.each do |s|
-      shifts = Shift.joins(:person).select("people.vname as name").where("section_id = ?", s.id).order("vname,nname ASC")
+      shifts = Shift.joins(:person).select("people.vname, people.nname").where("section_id = ?", s.id).order("vname,nname ASC")
+      #shifts = Shift.where("section_id = ? and person_id NOT NULL",s.id)
       unless shifts.empty?
         @data[s.name] = []
         shifts.each do |ss|
-          @data[s.name] << ss.name
+          name = [ss.vname,ss.nname].join(' ')
+          @data[s.name] << name
         end
       end
     end
