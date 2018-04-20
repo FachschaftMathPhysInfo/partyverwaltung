@@ -81,7 +81,7 @@ class OriginsController < ApplicationController
               perso = Person.find(ss.person_id)
               input << perso.vname
               input << perso.nname
-              if params[:mails]
+              if params[:mails] == "true"
                 input << perso.mail
               else
                 input << "XXXXXXXXXX"
