@@ -81,11 +81,51 @@ class OriginsController < ApplicationController
               perso = Person.find(ss.person_id)
               input << perso.vname
               input << perso.nname
-              if params[:mails] == "true"
-                input << perso.mail
-              else
-                input << "XXXXXXXXXX"
-              end
+              input << "XXXXXXXXXX"
+              input << perso.shirt
+              input << "(" + perso.typ.to_s[0] + ")"
+            else
+              input << ""
+              input << ""
+              input << ""
+              input << ""
+              input << ""
+            end
+            @data[s.name] << input
+          end
+        end
+      end
+    end
+    
+    @orient = "landscape"
+    
+    respond_to do |format|
+      format.pdf {render 'filled_list'}
+      format.html {redirect_to (origins_lists_path)}
+    end  
+  end
+  
+  def list_filled_mail
+    council = Council.where("name = ?", params[:counc]).first
+    
+    sections=Section.where("party_id = ? AND visible=true", getActiveParty().id).order('name')
+    
+    @data = {}
+    
+    sections.each do |s|
+      #shifts = Shift.where("section_id = ? AND council_id = ?", s.id, council.id).order("start-interval '8 hours' ASC")#.order('start DESC, person_id')
+      shifttimes = Shift.select("start,ende").where("section_id = ? AND council_id = ?", s.id, council.id).order("start-interval '8 hours' ASC").group("start,ende")
+      unless shifttimes.empty?
+        @data[s.name] = []
+        shifttimes.each do |t|
+          shifts = Shift.where("section_id = ? AND council_id = ? AND start = ? AND ende = ?", s.id, council.id, t.start, t.ende).order("person_id ASC NULLS LAST")
+          shifts.each do |ss|
+            input = [ ss.start.to_s(:time), ss.ende.to_s(:time) ]
+            if ss.person_id
+              perso = Person.find(ss.person_id)
+              input << perso.vname
+              input << perso.nname
+              input << perso.mail
               input << perso.shirt
               input << "(" + perso.typ.to_s[0] + ")"
             else

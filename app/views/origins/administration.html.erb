@@ -80,7 +80,7 @@
       <% end %>
       -->
       <% if canUse("OriginsController","reminder") %>      
-        <%= link_to origins_reminder_path do %>
+        <%= link_to root_path, :data => {:confirm => "Sure?"} do %>
           <div class="small-4 column linkEntry">
             <%= fa_icon "envelope 5x" %>
             <p>

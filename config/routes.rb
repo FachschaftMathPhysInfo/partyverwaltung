@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get 'origins/lists'
   post 'origins/list_empty', :as => :list_empty
   post 'origins/list_filled', :as => :list_filled
+  post 'origins/list_filled_mail', :as => :list_filled_mail
   post 'origins/list_needy', :as => :list_needy
   post 'origins/list_needy_clear', :as => :list_needy_clear
   post 'origins/list_section', :as => :list_section

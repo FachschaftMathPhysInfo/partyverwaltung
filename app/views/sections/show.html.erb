@@ -78,11 +78,17 @@
           Bereichstext
         </div>
         <div class="row">
+          <% if canUse("SectionsController","update") %>
           <a data-open="editTextModal">
             <div class="small-12 column">
               <%= simple_format @section.text || "Noch nichts geschrieben" %>
             </div>
           </a>
+          <% else %>
+            <div class="small-12 column">
+              <%= simple_format @section.text || "Noch nichts geschrieben" %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>

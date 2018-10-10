@@ -30,7 +30,7 @@
       </div>
     <% end %>
     
-    <% if canUse('OriginsController','list_filled') %>
+    <% if canUse('OriginsController','list_filled_mail') %>
       <div class="row listEntry">
         <div class="small-2 column">
           <button data-open="filledMailModal">
@@ -160,7 +160,6 @@
         <%= radio_button_tag :counc, c.name %><label for="counc_<%= c.name %>"><%= c.name %></label>
       <% end %>
     </fieldset>
-    <%= hidden_field_tag :mails, false %>
   <%= submit_tag "Generieren", :class=>"expanded button" %>
   <% end %>
 
@@ -170,14 +169,13 @@
 </div>
 
 <div class="reveal" id="filledMailModal" data-reveal>
-  <%= form_tag list_filled_path(:format => :pdf) do%>
+  <%= form_tag list_filled_mail_path(:format => :pdf) do%>
     <fieldset class="fieldset councSelect">
       <legend>Fachschaft</legend>
       <% Council.all.each do |c| %>
         <%= radio_button_tag :counc, c.name %><label for="counc_<%= c.name %>"><%= c.name %></label>
       <% end %>
     </fieldset>
-    <%= hidden_field_tag :mails, true %>
   <%= submit_tag "Generieren", :class=>"expanded button" %>
   <% end %>
 
