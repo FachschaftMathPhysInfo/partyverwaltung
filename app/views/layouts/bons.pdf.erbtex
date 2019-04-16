@@ -16,22 +16,19 @@
 \newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
 
 \newcommand{\bon}[2]{
-  \hspace*{1cm} 
+  \hspace*{2.5cm} 
   \begin{tikzpicture}
-    \draw[fill={rgb:black,1;white,4}, line width=1mm] (0,0) rectangle ++(6.5,-1.9);
-    \node[anchor=west] at (.1,-1) {\bfseries\fontsize{40}{48}\selectfont #1};
-    \node[anchor=west] at (3.5,-1) {\begin{minipage}{2.5cm}\small #2\end{minipage}};
-
-    \draw[line width=1mm] (6.95,0) rectangle ++(2.6,-1.9);
-          \node[anchor=west] at (7.1,-1) {\begin{minipage}{2.2cm}\bfseries\scriptsize Gutschein für\\1 Bier oder\\Alkoholfreies.\\Kein Cocktail!\end{minipage}};
+    \draw[fill={rgb:black,1;white,4}, line width=1mm] (0,0) rectangle ++(6.5,-1.5);
+    \node[anchor=west] at (.5,-0.75) {\bfseries\fontsize{40}{48}\selectfont #1};
+    \node[anchor=west] at (3.5,-0.75) {\begin{minipage}{2.5cm}\small #2\end{minipage}};
     
-    \draw[line width=1mm] (10,0) rectangle ++(17.3,-1.9);
-    \node[anchor=west] at (10.05,-1) {\bfseries\fontsize{40}{48}\selectfont #1};
-    \node[anchor=west] at (16.8,-1) {\bfseries\fontsize{40}{48}\selectfont #1};
-    \node[anchor=west] at (23.8,-1) {\bfseries\fontsize{40}{48}\selectfont #1};
+    \draw[line width=1mm] (7.5,0) rectangle ++(18,-1.5);
+    \node[anchor=west] at (8.25,-0.75) {\bfseries\fontsize{40}{48}\selectfont #1};
+    \node[anchor=west] at (15,-0.75) {\bfseries\fontsize{40}{48}\selectfont #1};
+    \node[anchor=west] at (22,-0.75) {\bfseries\fontsize{40}{48}\selectfont #1};
     
-    \node[anchor=west] at (13.55,-1) {\begin{minipage}{2.5cm}\centering\bfseries\fontsize{15}{18}\selectfont kein\\ Abholbon!\end{minipage}};
-    \node[anchor=west] at (20.3,-1) {\begin{minipage}{2.5cm}\centering\bfseries\fontsize{15}{18}\selectfont kein\\ Abholbon!\end{minipage}};
+    \node[anchor=west] at (11.75,-0.75) {\begin{minipage}{2.5cm}\centering\bfseries\fontsize{15}{18}\selectfont kein\\ Abholbon!\end{minipage}};
+    \node[anchor=west] at (19,-0.75) {\begin{minipage}{2.5cm}\centering\bfseries\fontsize{15}{18}\selectfont kein\\ Abholbon!\end{minipage}};
   \end{tikzpicture}
 }
 
