@@ -33,7 +33,7 @@
 }
 
 \usepackage[utf8]{inputenc}
-\geometry{a4paper, top=0.5cm, bottom=0.5cm, left=0.75cm, right=0.75cm}
+\geometry{a4paper, top=1cm, bottom=0.5cm, left=0.75cm, right=0.75cm}
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
 \begin{document}

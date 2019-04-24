@@ -3,7 +3,7 @@
     <% for k in 0..7 %>
       \bon{<%= sprintf '%04d', i*200 + j + k * 25 %>}{<%= @text %>}
       <% unless k==7 %>
-        \\[-.5mm]
+        \\[3mm]
       <% end %>
     <% end %>
     \newpage
