@@ -1,4 +1,4 @@
-FROM ruby:2.4.1
+FROM ruby:3.5-rc-bookworm
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
@@ -7,7 +7,22 @@ ENV RAILS_ENV=production
 EXPOSE 3000
 CMD ["/bin/bash","-c","rm -f /usr/src/app/tmp/pids/server.pid ; bundle exec rails server -b 0.0.0.0 -p 3000 2>&1 | tee /usr/src/app/log/stdout.log"]
 
-RUN apt-get update && apt-get install -y nodejs vim imagemagick texlive texlive-xetex fonts-freefont-ttf fonts-lmodern lmodern --no-install-recommends && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y nodejs vim imagemagick \ 
+    texlive texlive-xetex fonts-freefont-ttf fonts-lmodern lmodern \
+    --no-install-recommends && rm -rf /var/lib/apt/lists/*
 
-COPY ./ /usr/src/app
-RUN bundle install
+# Clean up apt cache now
+RUN apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# Copy files
+COPY . /usr/src/app
+ 
+#Configure bundler path
+RUN bash -lc 'bundle config set --local path vendor/bundle'
+
+# Use bundle install, not bin/bundle if bundle is in PATH
+RUN bash -lc 'bundle install --jobs=$(nproc) --retry=3'
+
+#RUN bundle exec whenever --update-crontab
+
