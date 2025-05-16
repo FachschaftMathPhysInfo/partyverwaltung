@@ -1,4 +1,4 @@
-FROM ruby:3.5-rc-bookworm
+FROM ruby:3.2-bullseye
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
@@ -9,7 +9,10 @@ CMD ["/bin/bash","-c","rm -f /usr/src/app/tmp/pids/server.pid ; bundle exec rail
 
 RUN apt-get update && apt-get install -y nodejs vim imagemagick \ 
     texlive texlive-xetex fonts-freefont-ttf fonts-lmodern lmodern \
-    --no-install-recommends && rm -rf /var/lib/apt/lists/*
+    python2 --no-install-recommends && rm -rf /var/lib/apt/lists/* 
+    
+# ahhhhhh python 2 is so old the symlinks are broken and have to be set manually
+RUN ln -sf /usr/bin/python2 /usr/bin/python
 
 # Clean up apt cache now
 RUN apt-get clean && \

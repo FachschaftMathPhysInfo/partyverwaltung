@@ -1,0 +1,9 @@
+services:  
+  web:
+    build: .
+    image: partyverwaltung:latest
+    ports:
+      - 3001:3000
+    env_file: forDocker.env
+    restart: unless-stopped
+    platform: linux/amd64

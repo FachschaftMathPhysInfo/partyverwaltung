@@ -57,6 +57,7 @@ gem 'paperclip'
 gem "paperclip_database", "~> 3.1"
 #latex
 gem 'rails-latex'
+gem 'libv8', '~> 3.16.14.19', platforms: :ruby
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
