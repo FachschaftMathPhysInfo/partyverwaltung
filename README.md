@@ -1,5 +1,7 @@
 # README
 
+[![Build and Deploy Status](https://github.com/FachschaftMathPhysInfo/moozean/actions/workflows/build_and_deploy.yml/badge.svg)](https://github.com/FachschaftMathPhysInfo/moozean/actions/workflows/build_and_deploy.yml)
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
