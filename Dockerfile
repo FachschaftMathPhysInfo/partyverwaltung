@@ -21,11 +21,9 @@ RUN apt-get clean && \
 # Copy files
 COPY . /usr/src/app
  
-#Configure bundler path
+# Configure bundler path and exclude development/test gems
 RUN bash -lc 'bundle config set --local path vendor/bundle'
-
-# Use bundle install, not bin/bundle if bundle is in PATH
-RUN bash -lc 'bundle install --jobs=$(nproc) --retry=3'
+RUN bash -lc 'bundle install --jobs=$(nproc) --retry=3 --without development test'
 
 #RUN bundle exec whenever --update-crontab
 

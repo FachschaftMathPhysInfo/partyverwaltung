@@ -5,5 +5,24 @@ services:
     ports:
       - 3001:3000
     env_file: forDocker.env
+    environment:
+      RAILS_ENV: production
+      DATABASE_URL: postgres://sven:baum@db:5432/partyverwaltung
     restart: unless-stopped
     platform: linux/amd64
+
+  db:
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: sven
+      POSTGRES_PASSWORD: baum
+      POSTGRES_DB: partyverwaltung
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  db_data:
+    driver: local
