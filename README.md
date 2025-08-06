@@ -1,3 +1,9 @@
+> [!CAUTION]
+> **THIS REPO IS ARCHIVED**
+> This Project is not being actively developed anymore.
+> No bugs will be fixed from our side, should you resolve a bug, pls open a PR, we will review it and deploy it.
+---
+
 # README
 
 [![Build image and deploy to registry](https://github.com/FachschaftMathPhysInfo/partyverwaltung/actions/workflows/build_and_deploy.yml/badge.svg?branch=master)](https://github.com/FachschaftMathPhysInfo/partyverwaltung/actions/workflows/build_and_deploy.yml)
